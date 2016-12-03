@@ -8,7 +8,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "lite": "lite-server",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings"
   },
   "repository": {
     "type": "git",
@@ -19,8 +24,42 @@
   ],
   "author": "Gabriel Munteanu",
   "license": "MIT",
+  "dependencies": {
+    "@angular/common": "~2.1.1",
+    "@angular/compiler": "~2.1.1",
+    "@angular/core": "~2.1.1",
+    "@angular/forms": "~2.1.1",
+    "@angular/http": "~2.1.1",
+    "@angular/platform-browser": "~2.1.1",
+    "@angular/platform-browser-dynamic": "~2.1.1",
+    "@angular/router": "~3.1.2",
+    "@angular/upgrade": "~2.1.1",
+    "@types/lodash": "^4.14.38",
+    "angular2-in-memory-web-api": "0.0.21",
+    "angular2-notifications": "^0.4.46",
+    "bootstrap": "^3.3.7",
+    "core-js": "^2.4.1",
+    "fullcalendar": "^3.0.1",
+    "jquery": "^2.2.4",
+    "moment": "^2.15.1",
+    "ng2-bootstrap": "^1.1.16",
+    "ng2-bs3-modal": "^0.10.4",
+    "ng2-dropdown": "0.0.15",
+    "ng2-uploader": "^1.4.1",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-beta.12",
+    "systemjs": "0.19.39",
+    "zone.js": "^0.6.25"
+  },
   "bugs": {
     "url": "https://github.com/calin-gabi/components/issues"
   },
-  "homepage": "https://github.com/calin-gabi/components#readme"
+  "homepage": "https://github.com/calin-gabi/components#readme",
+  "devDependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/node": "^6.0.45",
+    "concurrently": "^3.0.0",
+    "lite-server": "^2.2.2",
+    "typescript": "^2.0.3"
+  }
 }
