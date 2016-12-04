@@ -1,0 +1,20 @@
+16-12-03 18:25:43 HUMANOOABIsMBP2 INFO [components.core.boot:41] - Components started successfully on port 4016
+16-12-04 12:19:37 HUMANOOABIsMBP2 INFO [components.core.boot:42] - Components started successfully on port 4016
+16-12-04 12:23:46 HUMANOOABIsMBP2 INFO [components.core.boot:42] - Components started successfully on port 4016
+16-12-04 13:29:00 HUMANOOABIsMBP2 INFO [components.core.boot:43] - Components started successfully on port 4016
+16-12-04 13:35:10 HUMANOOABIsMBP2 INFO [components.core.boot:43] - Components started successfully on port 4016
+16-12-04 13:45:57 HUMANOOABIsMBP2 INFO [components.core.boot:43] - Components started successfully on port 4016
+16-12-04 14:32:29 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
+16-12-04 14:36:40 HUMANOOABIsMBP2 INFO [components.core.boot:43] - Components started successfully on port 4016
+16-12-04 14:36:56 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
+16-12-04 14:40:55 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
+16-12-04 14:48:28 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
+16-12-04 14:49:30 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
+16-12-04 14:50:16 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
+16-12-04 14:51:50 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
+16-12-04 14:52:27 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
+16-12-04 14:57:09 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
+16-12-04 14:57:49 HUMANOOABIsMBP2 INFO [components.core.boot:43] - Components started successfully on port 4016
+16-12-04 14:57:54 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
+16-12-04 14:59:29 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
+16-12-04 15:17:28 HUMANOOABIsMBP2 INFO [components.core.boot:45] - Components started successfully on port 4016

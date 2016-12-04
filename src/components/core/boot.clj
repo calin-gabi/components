@@ -3,6 +3,9 @@
    [ak-dbg.core :refer :all]
    [compojure.core :refer [defroutes routes GET POST]]
    [compojure.route :as route]
+   [components.ctrl.index :refer [index-routes]]
+   [components.ctrl.middleware :as c-mid]
+   [components.ctrl.template :refer [template-routes]]
    [cuerdas.core :as str]
    [environ.core :refer [env]]
    [hugsql.core :as hugsql]
@@ -18,7 +21,8 @@
   (route/not-found "<p>Page unfortunately not found.</p>"))
 
 (def app (reload/wrap-reload
-          (-> (routes base-routes))))
+          (-> (routes index-routes template-routes base-routes)
+              (c-mid/middleware))))
               
 (defn init [args]
   (let [port (some-> args
@@ -28,11 +32,11 @@
 
    (log/merge-config!
     {:level :info
-     :appenders {:rotor (rotor/rotor-appender {:path "coponents.log"
+     :appenders {:rotor (rotor/rotor-appender {:path "components.log"
                                                :max-size (* 512 1024)
                                                :backlog 10})}
      :ns-blacklist []
-     :timestamp-opts {:locale (java.util.Locale/GERMAN)}})
+     :timestamp-opts {:locale (java.util.Locale/ENGLISH)}})
 
    (kit/run-server #'app {:port port* :max-line (* 1024 16)})
 
