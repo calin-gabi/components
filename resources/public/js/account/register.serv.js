@@ -18,7 +18,11 @@ var RegisterServ = (function () {
         this.cfg = cfg;
         this.stateServ = stateServ;
     }
-    RegisterServ.prototype.register = function (user) {
+    RegisterServ.prototype.isUsedUsername = function (username) {
+        var url = this.cfg.url + "/user/exists/" + username;
+        return this.http.get(url);
+    };
+    RegisterServ.prototype.save = function (user) {
         var url = this.cfg.url + "/register";
         var body = JSON.stringify(user);
         var headers = new http_1.Headers({ "Content-Type": "application/json" });

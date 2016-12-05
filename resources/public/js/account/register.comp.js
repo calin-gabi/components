@@ -24,18 +24,54 @@ var RegisterComp = (function () {
         this.errMsg = "";
         this.onCred = new ReplaySubject_1.ReplaySubject();
     }
+    RegisterComp.prototype.areNotEqual = function (control) {
+        var controls = control["controls"];
+        var password = controls["password"];
+        var password_rep = controls["password_rep"];
+        var ok = !password_rep.touched || (password.value === password_rep.value);
+        return ok ? null : { areEqual: true };
+    };
+    RegisterComp.prototype.usedUsername = function (control) {
+        var _this = this;
+        var p = new Promise(function (resolve, reject) {
+            if (!control.value) {
+                resolve(null);
+                return;
+            }
+            _this.registerServ.isUsedUsername(control.value).subscribe(function (res) {
+                var body = res.json();
+                var stat = body.stat;
+                if (body.res) {
+                    resolve({ usedUsername: true });
+                }
+                else {
+                    resolve(null);
+                }
+            }, function (err) {
+                console.error(err);
+            });
+        });
+        return p;
+    };
     RegisterComp.prototype.buildForm = function () {
         this.form = this.fb.group({
-            username: ["", [forms_1.Validators.required]],
-            password: ["", [forms_1.Validators.required]],
-            retypepassword: ["", [forms_1.Validators.required]]
+            username: ["", [forms_1.Validators.required,
+                    forms_1.Validators.minLength(2),
+                    forms_1.Validators.maxLength(100),
+                ], this.usedUsername.bind(this)],
+            passwords: this.fb.group({
+                password: ["", [forms_1.Validators.required,
+                        forms_1.Validators.minLength(5)]],
+                password_rep: ["", [forms_1.Validators.required,
+                        forms_1.Validators.minLength(5)]]
+            }, { validator: this.areNotEqual })
         });
     };
     RegisterComp.prototype.submit = function () {
         var _this = this;
         this.submitted = true;
         var obj = this.form.value;
-        this.registerServ.register(obj).subscribe(function (res) {
+        this.registerServ.save(obj).subscribe(function (res) {
             var body = res.json();
             var stat = body.stat;
             if (stat === "ok") {

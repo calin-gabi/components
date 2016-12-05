@@ -21,19 +21,25 @@
         :required ""
         :autofocus ""}]]
 
-     [:div.form-group
-      [:input.password.form-control
-       {:formControlName "password"
-        "[placeholder]" "'Password'"
-        :required ""
-        :type "password"}]]
 
-     [:div.form-group
-      [:input.retypepassword.form-control
-       {:formControlName "retypepassword"
-        "[placeholder]" "'Password'"
-        :required ""
-        :type "password"}]]
+       [:fieldset
+        {:formGroupName "passwords"}
+        [:div.row
+         [:div.col-sm-6
+          [:div.form-group
+           [:input.form-control
+            {:formControlName "password"
+             :required ""
+             :type "password"
+             :placeholder "Password"}]]]
+
+         [:div.col-sm-6
+          [:div.form-group
+           [:input.form-control
+            {:formControlName "password_rep"
+             :required ""
+             :type "password"
+             :placeholder "Password"}]]]]]
 
       [:div.text-danger
        {"*ngIf" "errMsg"}

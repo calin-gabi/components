@@ -31,18 +31,66 @@ export class RegisterComp implements OnInit, OnDestroy {
                 private registerServ: RegisterServ) {
     }
 
+    areNotEqual(control: FormControl): {[s: string]: boolean} {
+        const controls = control["controls"];
+        const password = controls["password"];
+        const password_rep = controls["password_rep"];
+        const ok = !password_rep.touched || (password.value === password_rep.value);
+
+        return ok ? null : {areEqual: true};
+    }
+
+
+    usedUsername(control: FormControl): Promise<any> {
+        let p = new Promise((resolve, reject) => {
+
+            if (!control.value) {
+                resolve(null);
+                return;
+            }
+
+            this.registerServ.isUsedUsername(control.value).subscribe(
+                (res: Response) => {
+                    const body = res.json();
+                    const stat = body.stat;
+                    if (body.res) {
+                        resolve({usedUsername: true});
+                    }
+                    else {
+                        resolve(null);
+                    }
+                },
+
+                (err: Response) => {
+                    console.error(err);
+                }
+            );
+        });
+
+        return p;
+    }
+
     buildForm(): void {
         this.form = this.fb.group({
-            username: ["", [Validators.required]],
-            password: ["", [Validators.required]],
-            retypepassword: ["", [Validators.required]]
+                username: ["", [Validators.required,
+                                Validators.minLength(2),
+                                Validators.maxLength(100),
+                ], this.usedUsername.bind(this)],
+
+                passwords: this.fb.group({
+                    password: ["", [Validators.required,
+                                    Validators.minLength(5)]],
+
+                    password_rep: ["", [Validators.required,
+                                        Validators.minLength(5)]]
+                }, {validator: this.areNotEqual})
         });
     }
 
     submit(): void {
         this.submitted = true;
         let obj = this.form.value;
-        this.registerServ.register(obj).subscribe(
+        this.registerServ.save(obj).subscribe(
             (res: Response) => {
                 const body = res.json();
                 const stat = body.stat;

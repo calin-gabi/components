@@ -11,7 +11,12 @@ export class RegisterServ {
                 private stateServ: StateServ) {
     }
 
-    register(user) {
+    isUsedUsername(username) {
+        let url = this.cfg.url + "/user/exists/" + username;
+        return this.http.get(url);
+    }
+
+    save(user) {
         let url = this.cfg.url + "/register";
         let body = JSON.stringify(user);
         let headers = new Headers({"Content-Type": "application/json"});
