@@ -18,3 +18,7 @@
 16-12-04 14:57:54 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
 16-12-04 14:59:29 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: nil
 16-12-04 15:17:28 HUMANOOABIsMBP2 INFO [components.core.boot:45] - Components started successfully on port 4016
+16-12-05 09:07:03 UnknownHost INFO [components.core.boot:45] - Components started successfully on port 4016
+16-12-05 09:11:56 UnknownHost INFO [components.core.boot:45] - Components started successfully on port 4016
+16-12-05 09:25:38 UnknownHost ERROR [components.ctrl.template:18] - template not found: login
+16-12-05 09:37:02 UnknownHost INFO [components.core.boot:47] - Components started successfully on port 4016

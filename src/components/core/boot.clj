@@ -16,6 +16,9 @@
    [ring.middleware.reload :as reload])
   (:gen-class))
 
+(require 'components.tmpl.account.login)
+(require 'components.tmpl.account.register)
+
 (defroutes base-routes
   (route/resources "/")
   (route/not-found "<p>Page unfortunately not found.</p>"))

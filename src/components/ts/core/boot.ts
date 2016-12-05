@@ -9,8 +9,17 @@ from "@angular/http";
 import {Router, Route, ActivatedRoute} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AccountModule} from "../account/account.module";
+
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 
+import {Cfg} from "./config";
+
+import {CoreModule} from "./core.module";
+import {StateServ} from "./state.serv";
+import {routing} from "./routing.comp";
+
+console.log("boot");
 // import {Cfg} from "./config";
 
 @Component({
@@ -18,27 +27,30 @@ import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
     templateUrl: "/template?type=main",
     styleUrls: ["css/main.css"],
     encapsulation: ViewEncapsulation.None,
-    providers: []
+    providers: [StateServ]
 })
 
 @Injectable()
 export class MainComp implements OnInit {
 
-    constructor() {
+    constructor(private stateServ: StateServ,
+                private router: Router) {
     }
 
     ngOnInit() {
+        console.log("main");
     }
 }
 
 @NgModule({
-    imports: [BrowserModule, HttpModule, FormsModule, ReactiveFormsModule],
+    imports: [BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, routing,
+            AccountModule, CoreModule],
 
     exports: [],
 
     declarations: [MainComp],
 
-    providers: [],
+    providers: [Cfg, StateServ],
 
     bootstrap: [MainComp]
 })

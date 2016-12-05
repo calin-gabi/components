@@ -18,4 +18,5 @@
 (defroutes index-routes
   (GET "/" req (index-page req))
   (GET "/404" req "404: Page not found.")
-  (GET "/login" req (index-page req)))
+  (GET "/login" req (index-page req))
+  (GET "/register" req (index-page req)))
