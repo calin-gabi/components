@@ -51,7 +51,6 @@
 
 ;; ## Authorization
 (defn trainer? [{:keys [identity] :as req}]
-  #_(dbg req)
   (if (contains? (set (:scopes identity)) "s100-user")
     (rules/success)
     (rules/error "Not authorized")))

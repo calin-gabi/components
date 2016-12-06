@@ -23,3 +23,41 @@
 16-12-05 09:25:38 UnknownHost ERROR [components.ctrl.template:18] - template not found: login
 16-12-05 09:37:02 UnknownHost INFO [components.core.boot:47] - Components started successfully on port 4016
 16-12-05 18:54:41 HUMANOOABIsMBP2 INFO [components.core.boot:48] - Components started successfully on port 4016
+16-12-06 07:15:46 UnknownHost INFO [components.core.boot:48] - Components started successfully on port 4016
+16-12-06 08:02:37 UnknownHost INFO [components.core.boot:48] - Components started successfully on port 4016
+16-12-06 08:15:26 UnknownHost INFO [components.core.boot:48] - Components started successfully on port 4016
+16-12-06 08:18:45 UnknownHost INFO [components.core.boot:48] - Components started successfully on port 4016
+16-12-06 08:20:59 UnknownHost INFO [components.core.boot:49] - Components started successfully on port 4016
+16-12-06 08:26:01 UnknownHost INFO [components.core.boot:49] - Components started successfully on port 4016
+16-12-06 08:30:40 UnknownHost ERROR [components.ctrl.register:48] - clojure.lang.PersistentArrayMap cannot be cast to java.lang.String
+16-12-06 08:31:46 UnknownHost ERROR [components.ctrl.register:48] - clojure.lang.PersistentArrayMap cannot be cast to java.lang.String
+16-12-06 08:32:50 UnknownHost ERROR [components.ctrl.register:47] - clojure.lang.PersistentArrayMap cannot be cast to java.lang.String
+16-12-06 08:33:37 UnknownHost ERROR [components.ctrl.register:47] - clojure.lang.PersistentArrayMap cannot be cast to java.lang.String
+16-12-06 08:34:30 UnknownHost INFO [components.core.boot:49] - Components started successfully on port 4016
+16-12-06 08:34:45 UnknownHost ERROR [components.ctrl.register:47] - clojure.lang.PersistentArrayMap cannot be cast to java.lang.String
+16-12-06 08:36:27 UnknownHost ERROR [components.ctrl.register:48] - clojure.lang.PersistentArrayMap cannot be cast to java.lang.String
+16-12-06 08:38:18 UnknownHost ERROR [components.ctrl.register:48] - clojure.lang.PersistentArrayMap cannot be cast to java.lang.String
+16-12-06 08:39:52 UnknownHost ERROR [components.ctrl.register:48] - clojure.lang.PersistentArrayMap cannot be cast to java.lang.String
+16-12-06 08:41:28 UnknownHost ERROR [components.ctrl.register:48] - clojure.lang.PersistentArrayMap cannot be cast to java.lang.String
+16-12-06 08:41:58 UnknownHost ERROR [components.ctrl.register:48] - clojure.lang.PersistentArrayMap cannot be cast to java.lang.String
+16-12-06 08:42:46 UnknownHost INFO [components.core.boot:49] - Components started successfully on port 4016
+16-12-06 08:44:43 UnknownHost ERROR [components.ctrl.register:48] - java.lang.String cannot be cast to clojure.lang.IFn
+16-12-06 09:34:33 UnknownHost INFO [components.core.boot:49] - Components started successfully on port 4016
+16-12-06 14:23:08 UnknownHost INFO [components.core.boot:50] - Components started successfully on port 4016
+16-12-06 14:37:19 UnknownHost INFO [components.core.boot:50] - Components started successfully on port 4016
+16-12-06 15:15:19 UnknownHost INFO [components.core.boot:50] - Components started successfully on port 4016
+16-12-06 15:23:39 UnknownHost INFO [components.core.boot:50] - Components started successfully on port 4016
+16-12-06 15:24:55 UnknownHost INFO [components.core.boot:50] - Components started successfully on port 4016
+16-12-06 15:29:36 UnknownHost ERROR [components.ctrl.template:18] - template not found: nil
+16-12-06 15:29:36 UnknownHost ERROR [components.ctrl.template:18] - template not found: nil
+16-12-06 15:29:36 UnknownHost ERROR [components.ctrl.template:18] - template not found: nil
+16-12-06 15:29:36 UnknownHost ERROR [components.ctrl.template:18] - template not found: nil
+16-12-06 15:33:23 UnknownHost ERROR [components.ctrl.template:18] - template not found: nil
+16-12-06 15:33:23 UnknownHost ERROR [components.ctrl.template:18] - template not found: nil
+16-12-06 15:33:23 UnknownHost ERROR [components.ctrl.template:18] - template not found: nil
+16-12-06 15:33:23 UnknownHost ERROR [components.ctrl.template:18] - template not found: nil
+16-12-06 15:40:47 UnknownHost INFO [components.core.boot:50] - Components started successfully on port 4016
+16-12-06 17:00:54 HUMANOOABIsMBP2 INFO [components.core.boot:50] - Components started successfully on port 4016
+16-12-06 17:04:01 HUMANOOABIsMBP2 INFO [components.core.boot:50] - Components started successfully on port 4016
+16-12-06 19:21:58 HUMANOOABIsMBP2 INFO [components.core.boot:56] - Components started successfully on port 4016
+16-12-06 19:22:37 HUMANOOABIsMBP2 INFO [components.core.boot:56] - Components started successfully on port 4016

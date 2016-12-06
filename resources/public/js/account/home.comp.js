@@ -8,25 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
-var storage_comp_1 = require("./storage.comp");
-var auth_serv_1 = require("./auth.serv");
-var state_serv_1 = require("./state.serv");
-var CoreModule = (function () {
-    function CoreModule() {
+var state_serv_1 = require("../core/state.serv");
+var home_serv_1 = require("./home.serv");
+var HomeComp = (function () {
+    function HomeComp(stateServ, homeServ) {
+        this.stateServ = stateServ;
+        this.homeServ = homeServ;
     }
-    CoreModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            exports: [],
-            declarations: [],
-            providers: [storage_comp_1.LocalStorageComp, auth_serv_1.AuthServ, state_serv_1.StateServ],
-            bootstrap: []
+    HomeComp.prototype.ngOnInit = function () {
+        console.log("home");
+    };
+    HomeComp = __decorate([
+        core_1.Component({
+            selector: "home",
+            templateUrl: "/template?type=home",
+            styleUrls: ["css/main.css"],
+            encapsulation: core_1.ViewEncapsulation.None,
+            providers: [home_serv_1.HomeServ]
         }), 
-        __metadata('design:paramtypes', [])
-    ], CoreModule);
-    return CoreModule;
+        __metadata('design:paramtypes', [state_serv_1.StateServ, home_serv_1.HomeServ])
+    ], HomeComp);
+    return HomeComp;
 }());
-exports.CoreModule = CoreModule;
-//# sourceMappingURL=core.module.js.map
+exports.HomeComp = HomeComp;
+//# sourceMappingURL=home.comp.js.map

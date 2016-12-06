@@ -4,13 +4,13 @@
    [ak-dbg.core :refer :all]
    [environ.core :refer [env]]))
 
-(def app-api-cred {:username "dashboard-system" :password "D*w^8Bxi"})
+(def auth-uris {:dev "http://localhost:4016"})
 
-(def auth-cred {:username "s100-system" :password "tr@1nersdajklh28"})
-
-(def auth-uris {:dev "http://localhost:6029"})
+(def secret "mysecret")
 
 (defonce db (str "jdbc:postgres://localhost"
-                 "/dashboard_pre"
-                 "?user=clj"
-                 "&password=4jwSw@54FDykI@OeZ@Vt"))
+                 "/components"
+                 "?user=sa"
+                 "&password=2vE7kG4fG.@w9T"))
+
+(def trusted-algs #{:bcrypt+sha512})

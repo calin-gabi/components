@@ -9,24 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var platform_browser_1 = require("@angular/platform-browser");
+var common_1 = require("@angular/common");
 var core_1 = require("@angular/core");
-var storage_comp_1 = require("./storage.comp");
-var auth_serv_1 = require("./auth.serv");
-var state_serv_1 = require("./state.serv");
-var CoreModule = (function () {
-    function CoreModule() {
+var router_1 = require("@angular/router");
+var home_comp_1 = require("./home.comp");
+var HomeModule = (function () {
+    function HomeModule() {
     }
-    CoreModule = __decorate([
+    HomeModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            exports: [],
-            declarations: [],
-            providers: [storage_comp_1.LocalStorageComp, auth_serv_1.AuthServ, state_serv_1.StateServ],
+            imports: [platform_browser_1.BrowserModule, common_1.CommonModule, router_1.RouterModule],
+            exports: [home_comp_1.HomeComp],
+            declarations: [home_comp_1.HomeComp],
+            providers: [],
             bootstrap: []
         }), 
         __metadata('design:paramtypes', [])
-    ], CoreModule);
-    return CoreModule;
+    ], HomeModule);
+    return HomeModule;
 }());
-exports.CoreModule = CoreModule;
-//# sourceMappingURL=core.module.js.map
+exports.HomeModule = HomeModule;
+//# sourceMappingURL=home.module.js.map

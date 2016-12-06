@@ -1,13 +1,19 @@
 import {Routes, RouterModule} from "@angular/router";
 import {LoginComp} from "../account/login.comp";
+import {HomeComp} from "../home/home.comp";
 import {RegisterComp} from "../account/register.comp";
 import {AuthServ} from "./auth.serv";
 
 const appRoutes: Routes = [
     {
         path: "",
-        redirectTo: "/login",
+        redirectTo: "/home",
         pathMatch: "full"
+    },
+    {
+        path: "home",
+        component: HomeComp,
+        canActivate: [AuthServ]
     },
     {
         path: "login",

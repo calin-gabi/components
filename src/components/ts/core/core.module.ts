@@ -4,7 +4,7 @@ import {LocalStorageComp} from "./storage.comp";
 import {Cfg} from "./config";
 import {AuthServ} from "./auth.serv";
 import {StateServ} from "./state.serv";
-console.log("core.module");
+
 @NgModule({
     imports: [BrowserModule],
 

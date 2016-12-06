@@ -51,12 +51,10 @@ export class LoginComp implements OnInit, OnDestroy {
                     const obj = {
                         token: body.res.token,
                         username: body.res.user.username,
-                        userid: body.res.user.userid,
                         timestamp: Date.now()
                     };
-
                     this.stateServ.cred = obj;
-                    this.router.navigate(["/"]);
+                    this.router.navigate(["/home"]);
                 }
                 else {
                     this.errMsg = body.msg;

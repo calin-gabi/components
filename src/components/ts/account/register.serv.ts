@@ -12,7 +12,7 @@ export class RegisterServ {
     }
 
     isUsedUsername(username) {
-        let url = this.cfg.url + "/user/exists/" + username;
+        let url = this.cfg.url + "/userexists/" + username;
         return this.http.get(url);
     }
 

@@ -8,6 +8,7 @@
    [cheshire "5.6.3"]
    [clj-http "3.4.1"]
    [clj-time "0.12.2"]
+   [clojusc/friend-oauth2 "0.3.0-SNAPSHOT"]
    [com.layerware/hugsql-core "0.4.7"]
    [com.layerware/hugsql-adapter-clojure-java-jdbc "0.4.7"]
    [com.taoensso/encore "2.87.0"]

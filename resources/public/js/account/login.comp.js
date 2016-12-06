@@ -42,11 +42,10 @@ var LoginComp = (function () {
                 var obj_1 = {
                     token: body.res.token,
                     username: body.res.user.username,
-                    userid: body.res.user.userid,
                     timestamp: Date.now()
                 };
                 _this.stateServ.cred = obj_1;
-                _this.router.navigate(["/"]);
+                _this.router.navigate(["/home"]);
             }
             else {
                 _this.errMsg = body.msg;

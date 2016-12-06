@@ -91,25 +91,11 @@ export class RegisterComp implements OnInit, OnDestroy {
         this.submitted = true;
         let obj = this.form.value;
         this.registerServ.save(obj).subscribe(
+
             (res: Response) => {
                 const body = res.json();
+                console.log(res);
                 const stat = body.stat;
-                if (stat === "ok") {
-                    this.errMsg = "";
-                    // !!! here also save the id
-                    const obj = {
-                        token: body.res.token,
-                        username: body.res.user.username,
-                        userid: body.res.user.userid,
-                        timestamp: Date.now()
-                    };
-
-                    this.stateServ.cred = obj;
-                    this.router.navigate(["/"]);
-                }
-                else {
-                    this.errMsg = body.msg;
-                }
             },
 
             (err: Response) => {

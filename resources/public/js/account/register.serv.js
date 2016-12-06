@@ -19,7 +19,7 @@ var RegisterServ = (function () {
         this.stateServ = stateServ;
     }
     RegisterServ.prototype.isUsedUsername = function (username) {
-        var url = this.cfg.url + "/user/exists/" + username;
+        var url = this.cfg.url + "/userexists/" + username;
         return this.http.get(url);
     };
     RegisterServ.prototype.save = function (user) {

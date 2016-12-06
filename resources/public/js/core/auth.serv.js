@@ -71,7 +71,7 @@ var AuthServ = (function () {
             return false;
         }
     };
-    AuthServ.prototype.isAuth = function (scopes) {
+    AuthServ.prototype.isAuth = function () {
         if (this.stateServ.cred
             && this.isTokenValid(this.stateServ.cred.token, false)) {
             return true;
@@ -86,6 +86,9 @@ var AuthServ = (function () {
             return true;
         }
         ;
+        if (this.isAuth()) {
+            return true;
+        }
         this.router.navigate(["/login"]);
         return false;
     };

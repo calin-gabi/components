@@ -75,7 +75,7 @@ export class AuthServ implements CanActivate {
         }
     }
 
-    isAuth(scopes: string[]): boolean {
+    isAuth(): boolean {
         if (this.stateServ.cred
             && this.isTokenValid(this.stateServ.cred.token, false)) {
             return true;
@@ -84,37 +84,6 @@ export class AuthServ implements CanActivate {
             return false;
         }
     }
-
-    // ruleGet(route) {
-    //     const rules: any = [
-    //         ["/home", ["s100-user"]],
-    //         ["/calendar", ["s100-user"]],
-    //         ["/admin?.+", ["s100-user"]],
-    //         ["/trainee", ["s100-trainer"]]
-    //     ];
-
-    //     const matching = (rule, route) => {
-    //         // console.log("rule: " + rule);
-    //         // console.log("route: " + route);
-    //         const re = new RegExp(rule, "i");
-    //         const matches_array = re.exec(route);
-    //         // console.log(matches_array);
-    //         return (matches_array && matches_array[0]) ? true : false;
-    //     };
-
-    //     let result = [];
-
-    //     for (let rule of rules) {
-    //         if (matching(rule[0], route)) {
-    //             result = rule[1];
-    //             break;
-    //         }
-    //     }
-
-    //     // console.log(result);
-
-    //     return result;
-    // }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
         // console.log(">>>>>>>>>>>>>>> canActivate");
@@ -130,9 +99,9 @@ export class AuthServ implements CanActivate {
             return true;
         };
 
-        // if (this.isAuth(this.ruleGet(state.url))) {
-        //     return true;
-        // }
+        if (this.isAuth()) {
+            return true;
+        }
 
         this.router.navigate(["/login"]);
 

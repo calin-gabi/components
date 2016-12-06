@@ -8,25 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
-var storage_comp_1 = require("./storage.comp");
-var auth_serv_1 = require("./auth.serv");
-var state_serv_1 = require("./state.serv");
-var CoreModule = (function () {
-    function CoreModule() {
+var http_1 = require("@angular/http");
+var config_1 = require("../core/config");
+var state_serv_1 = require("../core/state.serv");
+var HomeServ = (function () {
+    function HomeServ(http, cfg, stateServ) {
+        this.http = http;
+        this.cfg = cfg;
+        this.stateServ = stateServ;
     }
-    CoreModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            exports: [],
-            declarations: [],
-            providers: [storage_comp_1.LocalStorageComp, auth_serv_1.AuthServ, state_serv_1.StateServ],
-            bootstrap: []
-        }), 
-        __metadata('design:paramtypes', [])
-    ], CoreModule);
-    return CoreModule;
+    HomeServ = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http, config_1.Cfg, state_serv_1.StateServ])
+    ], HomeServ);
+    return HomeServ;
 }());
-exports.CoreModule = CoreModule;
-//# sourceMappingURL=core.module.js.map
+exports.HomeServ = HomeServ;
+//# sourceMappingURL=home.serv.js.map

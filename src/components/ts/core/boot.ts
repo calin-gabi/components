@@ -10,6 +10,7 @@ import {Router, Route, ActivatedRoute} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AccountModule} from "../account/account.module";
+import {HomeModule} from "../home/home.module";
 
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 
@@ -19,7 +20,6 @@ import {CoreModule} from "./core.module";
 import {StateServ} from "./state.serv";
 import {routing} from "./routing.comp";
 
-console.log("boot");
 // import {Cfg} from "./config";
 
 @Component({
@@ -38,13 +38,12 @@ export class MainComp implements OnInit {
     }
 
     ngOnInit() {
-        console.log("main");
     }
 }
 
 @NgModule({
     imports: [BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, routing,
-            AccountModule, CoreModule],
+            AccountModule, HomeModule, CoreModule],
 
     exports: [],
 
