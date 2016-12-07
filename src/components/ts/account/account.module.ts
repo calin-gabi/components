@@ -3,15 +3,16 @@ import {NgModule} from "@angular/core";
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {LoginComp} from "./login.comp";
+import {LogoutComp} from "./logout.comp";
 import {RegisterComp} from "./register.comp";
 import {UPLOAD_DIRECTIVES} from "ng2-uploader";
 
 @NgModule({
     imports: [CommonModule, ReactiveFormsModule, RouterModule],
 
-    exports: [LoginComp, RegisterComp],
+    exports: [LoginComp, LogoutComp, RegisterComp],
 
-    declarations: [LoginComp, RegisterComp, UPLOAD_DIRECTIVES],
+    declarations: [LoginComp, LogoutComp, RegisterComp, UPLOAD_DIRECTIVES],
 
     providers: [],
 

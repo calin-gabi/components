@@ -56,7 +56,11 @@ export class AuthServ implements CanActivate {
     }
 
     isTokenValid(token: string, async: boolean) {
-        return true;
+        if (token) {
+            return true;
+        } else {
+            return true;
+        }
     }
 
     isRespAllowed(resp: Response): boolean {
@@ -76,11 +80,14 @@ export class AuthServ implements CanActivate {
     }
 
     isAuth(): boolean {
+        console.log(this.stateServ.cred.token);
         if (this.stateServ.cred
             && this.isTokenValid(this.stateServ.cred.token, false)) {
+            console.log(true);
             return true;
         }
         else {
+            console.log(false);
             return false;
         }
     }

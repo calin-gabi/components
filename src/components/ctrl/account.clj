@@ -4,6 +4,7 @@
    [ak-dbg.core :refer :all]
    [ak-request.core :as ak-request]
    [buddy.hashers :as hashers]
+   [cemerick.friend :as friend]
    [cheshire.core :as json]
    [clojure.java.jdbc :as jdbc]
    [clojure.java.io :as cio]
@@ -14,7 +15,7 @@
    [components.models.token :as db-token]
    [hugsql.core :as hugsql]
    [mpg.core :as mpg]
-   [ring.util.response :refer [response file-response content-type]]
+   [ring.util.response :as response]
    [taoensso.nippy :as nippy]
    [taoensso.timbre :as log]))
 
@@ -86,10 +87,18 @@
           (log/error (.getMessage ex))
           {:stat :err :msg "DB error"})))
 
-    {:stat :err :msg "Insufficient data"})))      
+    {:stat :err :msg "Insufficient data"})))     
+
+(defn logout! [{:keys [params] :as req}]
+  (json/generate-string
+   (let [res (db-token/token-remove! (:token (dbg params)))
+          logout (friend/logout* (response/redirect (str (:context req) "/")))]
+     {:stat :ok})))
+
            
 ;; #### ROUTES
 (defroutes account-routes
   (GET "/userexists/:username" req (user-exists? req))
   (POST "/register" req (register! req))
-  (POST "/login" req (login req)))
+  (POST "/login" req (login req))
+  (POST "/logout" req (logout! req)))

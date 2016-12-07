@@ -35,20 +35,9 @@ var LoginComp = (function () {
         this.submitted = true;
         var obj = this.form.value;
         this.loginServ.login(obj).subscribe(function (res) {
-            var body = res.json();
-            var stat = body.stat;
-            if (stat === "ok") {
-                _this.errMsg = "";
-                var obj_1 = {
-                    token: body.res.token,
-                    username: body.res.user.username,
-                    timestamp: Date.now()
-                };
-                _this.stateServ.cred = obj_1;
+            console.log(res);
+            if (res.status === 200) {
                 _this.router.navigate(["/home"]);
-            }
-            else {
-                _this.errMsg = body.msg;
             }
         }, function (err) {
             console.error(err);

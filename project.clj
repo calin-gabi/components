@@ -9,6 +9,8 @@
    [clj-http "3.4.1"]
    [clj-time "0.12.2"]
    [clojusc/friend-oauth2 "0.3.0-SNAPSHOT"]
+   [com.cemerick/friend "0.2.3"]
+   [com.cemerick/url "0.1.1"]
    [com.layerware/hugsql-core "0.4.7"]
    [com.layerware/hugsql-adapter-clojure-java-jdbc "0.4.7"]
    [com.taoensso/encore "2.87.0"]

@@ -54,7 +54,12 @@ var AuthServ = (function () {
         return false;
     };
     AuthServ.prototype.isTokenValid = function (token, async) {
-        return true;
+        if (token) {
+            return true;
+        }
+        else {
+            return true;
+        }
     };
     AuthServ.prototype.isRespAllowed = function (resp) {
         try {
@@ -72,11 +77,14 @@ var AuthServ = (function () {
         }
     };
     AuthServ.prototype.isAuth = function () {
+        console.log(this.stateServ.cred.token);
         if (this.stateServ.cred
             && this.isTokenValid(this.stateServ.cred.token, false)) {
+            console.log(true);
             return true;
         }
         else {
+            console.log(false);
             return false;
         }
     };

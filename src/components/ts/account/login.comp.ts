@@ -43,22 +43,25 @@ export class LoginComp implements OnInit, OnDestroy {
         let obj = this.form.value;
         this.loginServ.login(obj).subscribe(
             (res: Response) => {
-                const body = res.json();
-                const stat = body.stat;
-                if (stat === "ok") {
-                    this.errMsg = "";
-                    // !!! here also save the id
-                    const obj = {
-                        token: body.res.token,
-                        username: body.res.user.username,
-                        timestamp: Date.now()
-                    };
-                    this.stateServ.cred = obj;
+                console.log(res);
+                if (res.status === 200) {
                     this.router.navigate(["/home"]);
                 }
-                else {
-                    this.errMsg = body.msg;
-                }
+                // const body = res.json();
+                // const stat = body.stat;
+                // if (stat === "ok") {
+                //     this.errMsg = "";
+                //     // !!! here also save the id
+                //     const obj = {
+                //         token: body.res.token,
+                //         username: body.res.user.username,
+                //         timestamp: Date.now()
+                //     };
+                //     this.stateServ.cred = obj;
+                // }
+                // else {
+                //     this.errMsg = body.msg;
+                // }
             },
 
             (err: Response) => {

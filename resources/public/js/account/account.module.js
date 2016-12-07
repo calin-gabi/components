@@ -13,6 +13,7 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var login_comp_1 = require("./login.comp");
+var logout_comp_1 = require("./logout.comp");
 var register_comp_1 = require("./register.comp");
 var ng2_uploader_1 = require("ng2-uploader");
 var AccountModule = (function () {
@@ -21,8 +22,8 @@ var AccountModule = (function () {
     AccountModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule, forms_1.ReactiveFormsModule, router_1.RouterModule],
-            exports: [login_comp_1.LoginComp, register_comp_1.RegisterComp],
-            declarations: [login_comp_1.LoginComp, register_comp_1.RegisterComp, ng2_uploader_1.UPLOAD_DIRECTIVES],
+            exports: [login_comp_1.LoginComp, logout_comp_1.LogoutComp, register_comp_1.RegisterComp],
+            declarations: [login_comp_1.LoginComp, logout_comp_1.LogoutComp, register_comp_1.RegisterComp, ng2_uploader_1.UPLOAD_DIRECTIVES],
             providers: [],
             bootstrap: []
         }), 

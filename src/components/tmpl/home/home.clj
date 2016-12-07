@@ -7,4 +7,5 @@
   (response-wrap
    [:div#home
     "Home S home!"
+    [:a {"routerLink" "/logout"} "Logout"]
    ]))

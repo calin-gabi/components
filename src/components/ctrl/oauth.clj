@@ -1,11 +1,9 @@
-(ns components.core.oauth
+(ns components.ctrl.oauth
   (:require [cemerick.friend        :as friend]
-            [cemerick.friend [workflows :as workflows]
-                             [credentials :as creds]]
-            [cemerick.url :as url]
             [friend-oauth2.workflow :as oauth2]
             [friend-oauth2.util     :refer [format-config-uri]]
-            [environ.core           :refer [env]]))
+            [ring.util.codec        :as codec]
+            #_[environ.core           :refer [env]]))
 
 (def client-config
   {:client-id     "198071236552-1rurcpfidu8fmhorrdkk6nb450hfk1b6.apps.googleusercontent.com"
@@ -35,5 +33,4 @@
                   {:client-config client-config
                    :uri-config uri-config
                    :credential-fn credential-fn})
-                   ;; Optionally add other workflows here...
                    ]})

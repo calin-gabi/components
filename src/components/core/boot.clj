@@ -1,11 +1,8 @@
 (ns components.core.boot
   (:require
    [ak-dbg.core :refer :all]
-   [cemerick.friend :as friend]
-   #_[cemerick.friend [workflows :as workflows]
-                    [credentials :as creds]]
-   #_[cemerick.url :as url]
    [compojure.core :refer [defroutes routes GET POST]]
+   [cemerick.friend :as friend]
    [compojure.route :as route]
    [components.ctrl.index :refer [index-routes]]
    [components.ctrl.middleware :as c-mid]
@@ -31,8 +28,7 @@
   (route/not-found "<p>Page unfortunately not found.</p>"))
 
 (def app (reload/wrap-reload
-          (-> (routes index-routes template-routes account-routes base-routes)
-              #_(friend/authenticate oauth/friend-config)
+          (-> (routes c-mid/app-routes index-routes template-routes account-routes base-routes)
               (c-mid/middleware))))
               
 (defn init [args]
