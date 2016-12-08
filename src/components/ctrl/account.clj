@@ -100,5 +100,5 @@
 (defroutes account-routes
   (GET "/userexists/:username" req (user-exists? req))
   (POST "/register" req (register! req))
-  (POST "/login" req (login req))
+  #_(POST "/login" req (login req))
   (POST "/logout" req (logout! req)))

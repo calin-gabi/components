@@ -4,12 +4,12 @@
    [ak-dbg.core :refer :all]
    [ak-request.core :as ak-request]
    [buddy.hashers :as hashers]
+   #_[cemerick.friend :as friend]
    [cheshire.core :as json]
    [components.core.config :as cfg]
    [compojure.core :refer [defroutes routes GET POST]]
-   [cemerick.friend :as friend]
-   [cemerick.friend.workflows :refer [make-auth]]
-   (cemerick.friend [workflows :as workflows]
+   #_[cemerick.friend.workflows :refer [make-auth]]
+   #_(cemerick.friend [workflows :as workflows]
                     [credentials :as creds])
    [hugsql.core :as hugsql]
    [ring.middleware.defaults :refer [site-defaults api-defaults wrap-defaults]]
@@ -37,36 +37,33 @@
 
          {:security {:anti-forgery false}}))
 
-(derive ::admin ::user)
+; #_(defn do-login [req]
+;  (let [params (json/parse-string (slurp (:body req)) true)
+;        credential-fn (get-in req [::friend/auth-config :credential-fn])]
+;    (make-auth (dbg (credential-fn (select-keys params [:username :password]))))))
 
-(defn do-login [req]
- (let [params (json/parse-string (slurp (:body req)) true)
-       credential-fn (get-in req [::friend/auth-config :credential-fn])]
-   (make-auth (credential-fn (select-keys params [:username :password])))))
+; #_(defn password-workflow [req]
+;   (when (and (= (:request-method req) :post)
+;              (= (:uri req) "/login"))
+;         (do-login req)))
 
-(defn password-workflow [req]
-  (when (and (= (:request-method req) :post)
-             (= (:uri req) "/login"))
-        (do-login req)))
+; #_(defn password-credential-fn [{:keys [username password] :as creds}]
+;   (when-let [user (by-username-user-read cfg/db {:username username})]
+;     (when (hashers/check password (:password user))
+;      {:identity (:username user) :roles #{::user} :user user})))
 
-(defn password-credential-fn [{:keys [username password] :as creds}]
-  (when-let [user (by-username-user-read cfg/db {:username username})]
-    (when (hashers/check password (:password user))
-     {:identity (:username user) :roles #{::user} :user user})))
+; #_(defroutes app-routes
+;   (GET "/" [] "Hello everyone <form action=\"logout\" method=\"post\"><button>Submit</button></form>")
+;   (GET "/authorized" [] 
+;         (friend/authorize #{::user} (str "You have successfully authenticated as "
+;                                                             (friend/current-authentication))))
+;   (friend/logout (POST "/logout" [] "logging out")))
 
-(defroutes app-routes
-  #_(GET "/" [] "Hello everyone <form action=\"logout\" method=\"post\"><button>Submit</button></form>")
-  (GET "/authorized" [] 
-        (friend/authorize #{::user} (str "You have successfully authenticated as "
-                                                            (friend/current-authentication))))
-  (friend/logout (POST "/logout" [] "logging out")))
-
+      ; #_(friend/authenticate {:workflows [password-workflow]
+      ;                       :credential-fn password-credential-fn})
 ;; #### MIDDLEWARE
 (defn middleware [handler]
   (-> handler
-      (friend/authenticate {:allow-anon? true
-                            :workflows [password-workflow]
-                            :credential-fn password-credential-fn})
       (wrap-keyword-params)
       (wrap-params)
       (wrap-session)

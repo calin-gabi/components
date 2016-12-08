@@ -12,7 +12,8 @@
 
      [:form
       {"[formGroup]" "form"
-       "(ngSubmit)" "submit()"}
+       "action" "login"
+       "method" "post"}
 
      [:div.form-group
       [:input.username.form-control
