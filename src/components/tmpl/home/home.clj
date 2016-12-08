@@ -1,8 +1,6 @@
 (ns components.tmpl.home.home
   (:require
    [ak-dbg.core :refer :all]
-   [cemerick.friend :as friend]
-   [components.ctrl.middleware :as middl]
    [components.ctrl.template :refer [template response-wrap]]))
 
 (defmethod template "home" [{:keys [] :as req}]
@@ -12,5 +10,8 @@
     "Home S home!"]
     [:div ]
     [:a {"routerLink" "/logout"} "Logout"]
+    [:button 
+      {"(click)" "googleLogout()"}
+      "Google logout"]
 
    ]))

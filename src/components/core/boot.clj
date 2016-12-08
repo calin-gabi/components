@@ -2,13 +2,11 @@
   (:require
    [ak-dbg.core :refer :all]
    [compojure.core :refer [defroutes routes GET POST]]
-   #_[cemerick.friend :as friend]
    [compojure.route :as route]
    [components.ctrl.index :refer [index-routes]]
    [components.ctrl.middleware :as c-mid]
    [components.ctrl.template :refer [template-routes]]
    [components.ctrl.account :refer [account-routes]]
-   [components.ctrl.oauth :as oauth]
    [cuerdas.core :as str]
    [environ.core :refer [env]]
    [hugsql.core :as hugsql]

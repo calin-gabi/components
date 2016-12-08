@@ -16,14 +16,23 @@ var forms_1 = require("@angular/forms");
 var account_module_1 = require("../account/account.module");
 var home_module_1 = require("../home/home.module");
 var platform_browser_dynamic_1 = require("@angular/platform-browser-dynamic");
+var oauth_service_1 = require("angular2-oauth2/oauth-service");
 var config_1 = require("./config");
 var core_module_1 = require("./core.module");
 var state_serv_1 = require("./state.serv");
 var routing_comp_1 = require("./routing.comp");
 var MainComp = (function () {
-    function MainComp(stateServ, router) {
+    function MainComp(stateServ, router, oauthService) {
         this.stateServ = stateServ;
         this.router = router;
+        this.oauthService = oauthService;
+        this.oauthService.loginUrl = "https://accounts.google.com/o/oauth2/v2/auth";
+        this.oauthService.redirectUri = window.location.origin + "/home";
+        this.oauthService.clientId = "198071236552-1rurcpfidu8fmhorrdkk6nb450hfk1b6.apps.googleusercontent.com";
+        this.oauthService.scope = "profile";
+        this.oauthService.setStorage(localStorage);
+        this.oauthService.oidc = true;
+        this.oauthService.tryLogin({});
     }
     MainComp.prototype.ngOnInit = function () {
     };
@@ -33,10 +42,10 @@ var MainComp = (function () {
             templateUrl: "/template?type=main",
             styleUrls: ["css/main.css"],
             encapsulation: core_1.ViewEncapsulation.None,
-            providers: [state_serv_1.StateServ]
+            providers: [state_serv_1.StateServ, oauth_service_1.OAuthService]
         }),
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [state_serv_1.StateServ, router_1.Router])
+        __metadata('design:paramtypes', [state_serv_1.StateServ, router_1.Router, oauth_service_1.OAuthService])
     ], MainComp);
     return MainComp;
 }());
@@ -50,7 +59,7 @@ var MainModule = (function () {
                 account_module_1.AccountModule, home_module_1.HomeModule, core_module_1.CoreModule],
             exports: [],
             declarations: [MainComp],
-            providers: [config_1.Cfg, state_serv_1.StateServ],
+            providers: [config_1.Cfg, state_serv_1.StateServ, oauth_service_1.OAuthService],
             bootstrap: [MainComp]
         }), 
         __metadata('design:paramtypes', [])

@@ -11,17 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _ = require("lodash");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var oauth_service_1 = require("angular2-oauth2/oauth-service");
 var http_1 = require("@angular/http");
 var config_1 = require("./config");
 var state_serv_1 = require("./state.serv");
 var storage_comp_1 = require("./storage.comp");
 var AuthServ = (function () {
-    function AuthServ(http, router, cfg, stateServ, ls) {
+    function AuthServ(http, router, cfg, stateServ, ls, oauthService) {
         this.http = http;
         this.router = router;
         this.cfg = cfg;
         this.stateServ = stateServ;
         this.ls = ls;
+        this.oauthService = oauthService;
     }
     AuthServ.prototype.navUpdate = function (url) {
         var prev = this.stateServ.nav.next;
@@ -58,7 +60,7 @@ var AuthServ = (function () {
             return true;
         }
         else {
-            return true;
+            return false;
         }
     };
     AuthServ.prototype.isRespAllowed = function (resp) {
@@ -77,7 +79,6 @@ var AuthServ = (function () {
         }
     };
     AuthServ.prototype.isAuth = function () {
-        console.log(this.stateServ.cred.token);
         if (this.stateServ.cred
             && this.isTokenValid(this.stateServ.cred.token, false)) {
             console.log(true);
@@ -90,6 +91,12 @@ var AuthServ = (function () {
     };
     AuthServ.prototype.canActivate = function (route, state) {
         this.navUpdate(state.url);
+        var hasIdToken = this.oauthService.hasValidIdToken();
+        var hasAccessToken = this.oauthService.hasValidAccessToken();
+        if (hasIdToken && hasAccessToken) {
+            return true;
+        }
+        ;
         if (this.isNoAuthNeeded(state.url)) {
             return true;
         }
@@ -102,7 +109,7 @@ var AuthServ = (function () {
     };
     AuthServ = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, router_1.Router, config_1.Cfg, state_serv_1.StateServ, storage_comp_1.LocalStorageComp])
+        __metadata('design:paramtypes', [http_1.Http, router_1.Router, config_1.Cfg, state_serv_1.StateServ, storage_comp_1.LocalStorageComp, oauth_service_1.OAuthService])
     ], AuthServ);
     return AuthServ;
 }());

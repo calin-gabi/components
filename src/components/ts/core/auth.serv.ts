@@ -1,6 +1,7 @@
 import * as _ from "lodash";
 import {OnDestroy, Inject, Injectable} from "@angular/core";
 import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
+import {OAuthService} from "angular2-oauth2/oauth-service";
 import {Http, Response, Headers} from "@angular/http";
 import {Cfg} from "./config";
 import {StateServ, Cred} from "./state.serv";
@@ -13,7 +14,8 @@ export class AuthServ implements CanActivate {
                 private router: Router,
                 private cfg: Cfg,
                 private stateServ: StateServ,
-                private ls: LocalStorageComp) {
+                private ls: LocalStorageComp,
+                private oauthService: OAuthService) {
     }
 
     navUpdate(url: string): void {
@@ -59,7 +61,7 @@ export class AuthServ implements CanActivate {
         if (token) {
             return true;
         } else {
-            return true;
+            return false;
         }
     }
 
@@ -80,7 +82,6 @@ export class AuthServ implements CanActivate {
     }
 
     isAuth(): boolean {
-        console.log(this.stateServ.cred.token);
         if (this.stateServ.cred
             && this.isTokenValid(this.stateServ.cred.token, false)) {
             console.log(true);
@@ -101,6 +102,15 @@ export class AuthServ implements CanActivate {
         // console.log(state.url);
 
         // console.log(this.isAuth(this.isRuling(state.url)));
+
+        const hasIdToken = this.oauthService.hasValidIdToken();
+        const hasAccessToken = this.oauthService.hasValidAccessToken();
+        // console.log(hasIdToken);
+        // console.log(hasAccessToken);
+
+        if (hasIdToken && hasAccessToken) {
+            return true;
+        };
 
         if (this.isNoAuthNeeded(state.url)) {
             return true;

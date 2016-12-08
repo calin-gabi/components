@@ -4,7 +4,6 @@
    [ak-dbg.core :refer :all]
    [ak-request.core :as ak-request]
    [buddy.hashers :as hashers]
-   [cemerick.friend :as friend]
    [cheshire.core :as json]
    [clojure.java.jdbc :as jdbc]
    [clojure.java.io :as cio]
@@ -91,8 +90,7 @@
 
 (defn logout! [{:keys [params] :as req}]
   (json/generate-string
-   (let [res (db-token/token-remove! (:token (dbg params)))
-          logout (friend/logout* (response/redirect (str (:context req) "/")))]
+   (let [res (db-token/token-remove! (:token (dbg params)))]
      {:stat :ok})))
 
            
@@ -100,5 +98,5 @@
 (defroutes account-routes
   (GET "/userexists/:username" req (user-exists? req))
   (POST "/register" req (register! req))
-  #_(POST "/login" req (login req))
+  (POST "/login" req (login req))
   (POST "/logout" req (logout! req)))

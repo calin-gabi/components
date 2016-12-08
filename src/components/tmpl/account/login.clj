@@ -5,15 +5,14 @@
 
 (defmethod template "login" [{:keys [] :as req}]
   (response-wrap
-   [:div#login
+   [:div#login.hvr-float-shadow
     [:div.container-fluid
     [:div.login-form
      [:h3 "Login"]
 
      [:form
       {"[formGroup]" "form"
-       "action" "login"
-       "method" "post"}
+       "(ngSubmit)" "submit()"}
 
      [:div.form-group
       [:input.username.form-control
@@ -47,4 +46,7 @@
       [:a.btn.btn-register.center-block
        {"[routerLink]" "['/register']"
         "routerLinkActive" "active"}
-       "Register"]]]]]))
+       "Register"]     
+      [:button.btn.btn-google.center-block
+       {"(click)" "login()"}
+       "Google"]]]]]))

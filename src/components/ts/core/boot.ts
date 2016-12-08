@@ -13,7 +13,7 @@ import {AccountModule} from "../account/account.module";
 import {HomeModule} from "../home/home.module";
 
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
-
+import {OAuthService} from "angular2-oauth2/oauth-service";
 import {Cfg} from "./config";
 
 import {CoreModule} from "./core.module";
@@ -27,14 +27,26 @@ import {routing} from "./routing.comp";
     templateUrl: "/template?type=main",
     styleUrls: ["css/main.css"],
     encapsulation: ViewEncapsulation.None,
-    providers: [StateServ]
+    providers: [StateServ, OAuthService]
 })
 
 @Injectable()
 export class MainComp implements OnInit {
 
     constructor(private stateServ: StateServ,
-                private router: Router) {
+                private router: Router,
+                private oauthService: OAuthService) {
+
+        this.oauthService.loginUrl = "https://accounts.google.com/o/oauth2/v2/auth";
+        // this.oauthService.logoutUrl = "https://steyer-identity-server.azurewebsites.net/identity/connect/endsession?id_token={{id_token}}";
+        this.oauthService.redirectUri = window.location.origin + "/home";
+        this.oauthService.clientId = "198071236552-1rurcpfidu8fmhorrdkk6nb450hfk1b6.apps.googleusercontent.com";
+        this.oauthService.scope = "profile";
+        // this.oauthService.issuer = "https://steyer-identity-server.azurewebsites.net/identity";
+        this.oauthService.setStorage(localStorage);
+        this.oauthService.oidc = true;
+
+        this.oauthService.tryLogin({});
     }
 
     ngOnInit() {
@@ -49,7 +61,7 @@ export class MainComp implements OnInit {
 
     declarations: [MainComp],
 
-    providers: [Cfg, StateServ],
+    providers: [Cfg, StateServ, OAuthService],
 
     bootstrap: [MainComp]
 })

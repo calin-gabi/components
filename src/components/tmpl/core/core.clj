@@ -19,6 +19,7 @@
     [:link {:rel "stylesheet" :href "/node_modules/bootstrap/dist/css/bootstrap.min.css"} ]
     [:link {:rel "stylesheet" :href "/node_modules/jquery-ui/jquery-ui.min.css"} ]
     [:link {:rel "stylesheet" :href "/node_modules/fullcalendar/dist/fullcalendar.min.css"} ]
+    [:link {:rel "stylesheet" :href "/css/hover.css"} ]
     #_[:link {:rel "stylesheet" :href "/fonts/font-awesome-4.6.3/css/font-awesome.min.css"} ]
     [:script {:src "/node_modules/core-js/client/shim.min.js"}]
     [:script {:src "/node_modules/zone.js/dist/zone.js"}]

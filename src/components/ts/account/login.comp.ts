@@ -3,6 +3,7 @@ import {Component, ViewEncapsulation, OnInit, OnDestroy, Inject} from "@angular/
 import {Router, ActivatedRoute, NavigationEnd} from "@angular/router";
 import {Response} from "@angular/http";
 import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
+import {OAuthService} from "angular2-oauth2/oauth-service";
 import {Cfg} from "../core/config";
 import {StateServ, Cred} from "../core/state.serv";
 import {LoginServ} from "./login.serv";
@@ -28,7 +29,24 @@ export class LoginComp implements OnInit, OnDestroy {
     constructor(private router: Router,
                 private fb: FormBuilder,
                 private stateServ: StateServ,
-                private loginServ: LoginServ) {
+                private loginServ: LoginServ,
+                private oauthService: OAuthService) {
+    }
+
+    public login() {
+        this.oauthService.initImplicitFlow();
+    }
+
+    public logout() {
+        this.oauthService.logOut();
+    }
+
+    public get userName() {
+
+        let claims = this.oauthService.getIdentityClaims();
+        if (!claims) return null;
+
+        return claims.given_name;
     }
 
     buildForm(): void {
@@ -43,25 +61,23 @@ export class LoginComp implements OnInit, OnDestroy {
         let obj = this.form.value;
         this.loginServ.login(obj).subscribe(
             (res: Response) => {
-                console.log(res);
-                if (res.status === 200) {
-                    this.router.navigate(["/home"]);
+                const body = res.json();
+                const stat = body.stat;
+                console.log(body.res);
+                if (stat === "ok") {
+                    this.errMsg = "";
+                    // !!! here also save the id
+                    const obj = {
+                        token: body.res.token,
+                        username: body.res.user.username,
+                        timestamp: Date.now()
+                    };
+                    this.stateServ.cred = obj;
+                    this.router.navigate(["/"]);
                 }
-                // const body = res.json();
-                // const stat = body.stat;
-                // if (stat === "ok") {
-                //     this.errMsg = "";
-                //     // !!! here also save the id
-                //     const obj = {
-                //         token: body.res.token,
-                //         username: body.res.user.username,
-                //         timestamp: Date.now()
-                //     };
-                //     this.stateServ.cred = obj;
-                // }
-                // else {
-                //     this.errMsg = body.msg;
-                // }
+                else {
+                    this.errMsg = body.msg;
+                }
             },
 
             (err: Response) => {

@@ -10,12 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var state_serv_1 = require("../core/state.serv");
+var oauth_service_1 = require("angular2-oauth2/oauth-service");
 var home_serv_1 = require("./home.serv");
 var HomeComp = (function () {
-    function HomeComp(stateServ, homeServ) {
+    function HomeComp(stateServ, homeServ, oauthService) {
         this.stateServ = stateServ;
         this.homeServ = homeServ;
+        this.oauthService = oauthService;
     }
+    HomeComp.prototype.googleLogout = function () {
+        this.oauthService.logOut();
+    };
     HomeComp.prototype.ngOnInit = function () {
         console.log("home");
     };
@@ -25,9 +30,9 @@ var HomeComp = (function () {
             templateUrl: "/template?type=home",
             styleUrls: ["css/main.css"],
             encapsulation: core_1.ViewEncapsulation.None,
-            providers: [home_serv_1.HomeServ]
+            providers: [home_serv_1.HomeServ, oauth_service_1.OAuthService]
         }), 
-        __metadata('design:paramtypes', [state_serv_1.StateServ, home_serv_1.HomeServ])
+        __metadata('design:paramtypes', [state_serv_1.StateServ, home_serv_1.HomeServ, oauth_service_1.OAuthService])
     ], HomeComp);
     return HomeComp;
 }());
