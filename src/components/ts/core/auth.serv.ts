@@ -105,8 +105,6 @@ export class AuthServ implements CanActivate {
 
         const hasIdToken = this.oauthService.hasValidIdToken();
         const hasAccessToken = this.oauthService.hasValidAccessToken();
-        // console.log(hasIdToken);
-        // console.log(hasAccessToken);
 
         if (hasIdToken && hasAccessToken) {
             return true;

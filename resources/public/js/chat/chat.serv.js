@@ -8,26 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var platform_browser_1 = require("@angular/platform-browser");
-var common_1 = require("@angular/common");
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var home_comp_1 = require("./home.comp");
-var chat_module_1 = require("../chat/chat.module");
-var HomeModule = (function () {
-    function HomeModule() {
+var http_1 = require("@angular/http");
+var ChatServ = (function () {
+    function ChatServ(http) {
+        this.http = http;
     }
-    HomeModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, common_1.CommonModule, router_1.RouterModule, chat_module_1.ChatModule],
-            exports: [home_comp_1.HomeComp],
-            declarations: [home_comp_1.HomeComp],
-            providers: [],
-            bootstrap: []
-        }), 
-        __metadata('design:paramtypes', [])
-    ], HomeModule);
-    return HomeModule;
+    ChatServ.prototype.messagesGet = function (obj) {
+        var url = "/chat/messages/get";
+        var body = JSON.stringify(obj);
+        var headers = new http_1.Headers({ "Content-Type": "application/json" });
+        var opts = { headers: headers };
+        return this.http.post(url, body, opts);
+    };
+    ChatServ = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], ChatServ);
+    return ChatServ;
 }());
-exports.HomeModule = HomeModule;
-//# sourceMappingURL=home.module.js.map
+exports.ChatServ = ChatServ;
+//# sourceMappingURL=chat.serv.js.map

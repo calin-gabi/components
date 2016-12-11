@@ -32,16 +32,6 @@ var LoginComp = (function () {
     LoginComp.prototype.logout = function () {
         this.oauthService.logOut();
     };
-    Object.defineProperty(LoginComp.prototype, "userName", {
-        get: function () {
-            var claims = this.oauthService.getIdentityClaims();
-            if (!claims)
-                return null;
-            return claims.given_name;
-        },
-        enumerable: true,
-        configurable: true
-    });
     LoginComp.prototype.buildForm = function () {
         this.form = this.fb.group({
             username: ["", [forms_1.Validators.required]],

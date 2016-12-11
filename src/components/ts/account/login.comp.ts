@@ -41,14 +41,6 @@ export class LoginComp implements OnInit, OnDestroy {
         this.oauthService.logOut();
     }
 
-    public get userName() {
-
-        let claims = this.oauthService.getIdentityClaims();
-        if (!claims) return null;
-
-        return claims.given_name;
-    }
-
     buildForm(): void {
         this.form = this.fb.group({
             username: ["", [Validators.required]],

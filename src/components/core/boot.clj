@@ -7,6 +7,7 @@
    [components.ctrl.middleware :as c-mid]
    [components.ctrl.template :refer [template-routes]]
    [components.ctrl.account :refer [account-routes]]
+   [components.ctrl.chat :refer [chat-routes]]
    [cuerdas.core :as str]
    [environ.core :refer [env]]
    [hugsql.core :as hugsql]
@@ -20,13 +21,14 @@
 (require 'components.tmpl.account.login)
 (require 'components.tmpl.account.register)
 (require 'components.tmpl.home.home)
+(require 'components.tmpl.chat.chat)
 
 (defroutes base-routes
   (route/resources "/")
   (route/not-found "<p>Page unfortunately not found.</p>"))
 
 (def app (reload/wrap-reload
-          (-> (routes index-routes template-routes account-routes base-routes)
+          (-> (routes index-routes template-routes chat-routes account-routes base-routes)
               (c-mid/middleware))))
               
 (defn init [args]

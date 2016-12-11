@@ -6,6 +6,7 @@ import {Cfg} from "../core/config";
 import {StateServ, Cred} from "../core/state.serv";
 import {OAuthService} from "angular2-oauth2/oauth-service";
 import {HomeServ} from "./home.serv";
+import {ChatComp} from "../chat/chat.comp";
 
 @Component({
     selector: "home",
@@ -25,6 +26,15 @@ export class HomeComp implements OnInit {
     googleLogout() {
         this.oauthService.logOut();
     }
+
+    public get user() {
+
+        let claims = this.oauthService.getIdentityClaims();
+        if (!claims) return null;
+        console.log(claims);
+        return claims;
+    }
+
     // #### EVENTS
     ngOnInit() {
         console.log("home");

@@ -7,11 +7,15 @@
   (response-wrap
    [:div#home
     [:div 
-    "Home S home!"]
+    "Welcome home {{user.name}}!"
+      #_[:img 
+        {:src "{{user.picture}}"}]]
     [:div ]
     [:a {"routerLink" "/logout"} "Logout"]
     [:button 
       {"(click)" "googleLogout()"}
       "Google logout"]
+    [:chat]
+    
 
    ]))

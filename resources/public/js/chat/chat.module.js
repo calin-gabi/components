@@ -9,25 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var platform_browser_1 = require("@angular/platform-browser");
-var common_1 = require("@angular/common");
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var home_comp_1 = require("./home.comp");
-var chat_module_1 = require("../chat/chat.module");
-var HomeModule = (function () {
-    function HomeModule() {
+var chat_comp_1 = require("./chat.comp");
+var chat_serv_1 = require("./chat.serv");
+var ChatModule = (function () {
+    function ChatModule() {
     }
-    HomeModule = __decorate([
+    ChatModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, common_1.CommonModule, router_1.RouterModule, chat_module_1.ChatModule],
-            exports: [home_comp_1.HomeComp],
-            declarations: [home_comp_1.HomeComp],
-            providers: [],
+            imports: [platform_browser_1.BrowserModule],
+            exports: [chat_comp_1.ChatComp],
+            declarations: [chat_comp_1.ChatComp],
+            providers: [chat_serv_1.ChatServ],
             bootstrap: []
         }), 
         __metadata('design:paramtypes', [])
-    ], HomeModule);
-    return HomeModule;
+    ], ChatModule);
+    return ChatModule;
 }());
-exports.HomeModule = HomeModule;
-//# sourceMappingURL=home.module.js.map
+exports.ChatModule = ChatModule;
+//# sourceMappingURL=chat.module.js.map

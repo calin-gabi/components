@@ -21,6 +21,17 @@ var HomeComp = (function () {
     HomeComp.prototype.googleLogout = function () {
         this.oauthService.logOut();
     };
+    Object.defineProperty(HomeComp.prototype, "user", {
+        get: function () {
+            var claims = this.oauthService.getIdentityClaims();
+            if (!claims)
+                return null;
+            console.log(claims);
+            return claims;
+        },
+        enumerable: true,
+        configurable: true
+    });
     HomeComp.prototype.ngOnInit = function () {
         console.log("home");
     };
