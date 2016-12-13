@@ -83,6 +83,7 @@ var Oauth2CallbackComp = (function () {
             var body = res.json();
             console.log(res);
             var stat = body.stat;
+            window.location.href = "/";
         }, function (err) {
             console.error(err);
         });

@@ -6,12 +6,12 @@
 (defmethod template "home" [{:keys [] :as req}]
   (response-wrap
    [:div#home
-    [:div#navigation
-      [:div.col-lg-4
+    [:div#navigation.container
+      [:div.col-md-4
         {"*ngIf" "state.userProfile"}
         "Welcome home {{state.userProfile.first_name}} {{state.userProfile.last_name}}!"]
-      [:div.col-lg-7]
-      [:div.col-lg-1
+      [:div.col-md-7]
+      [:div.col-md-1
         [:button.btn
           {"(click)" "logout()"}
           "Logout"]]]

@@ -11,7 +11,7 @@
    [cuerdas.core :as str]
    [compojure.core :refer [context defroutes GET POST]]
    [components.core.config :as cfg]
-   [components.models.account :as db-token]
+   [components.models.account :as db-account]
    [hugsql.core :as hugsql]
    [mpg.core :as mpg]
    [ring.util.response :as response]
@@ -74,7 +74,7 @@
                 (do
                   (login-update! tx {:username username})
                   {:stat :ok :res {:user (select-keys db-user* [:username :roles :profile])
-                                    :token (:res (db-token/token-create! username roles))}})
+                                    :token (:res (db-account/token-create! username roles))}})
                 ;; # Wrong creds
                 (do
                   (attempts-update! tx {:username username})
@@ -91,17 +91,17 @@
 
 (defn oauth-get [{:keys [params] :as req}]
   (json/generate-string
-   (let [res (db-token/oauth-get params)]
+   (let [res (db-account/oauth-get params)]
      {:stat :ok :res res})))
 
 (defn oauth-set! [{:keys [params] :as req}]
   (json/generate-string
-   (let [res (db-token/oauth-set! (dbg params))]
+   (let [res (db-account/oauth-set! (dbg params))]
      {:stat :ok :res res})))
 
 (defn logout! [{:keys [params] :as req}]
   (json/generate-string
-   (let [res (db-token/token-remove! (:token params))]
+   (let [res (db-account/token-remove! (:token params))]
      {:stat :ok})))
 
            

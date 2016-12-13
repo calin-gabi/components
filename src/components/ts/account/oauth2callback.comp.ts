@@ -104,6 +104,7 @@ export class Oauth2CallbackComp implements OnInit {
                 const body = res.json();
                 console.log(res);
                 const stat = body.stat;
+                window.location.href = "/";
             },
 
             (err: Response) => {
