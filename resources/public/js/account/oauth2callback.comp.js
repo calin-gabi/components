@@ -28,6 +28,9 @@ var Oauth2CallbackComp = (function () {
         this.claims = {};
         this.waiting = true;
     }
+    Oauth2CallbackComp.prototype.waitingLoad = function () {
+        return this.waiting;
+    };
     Oauth2CallbackComp.prototype.getUserInfo = function () {
         var _this = this;
         var access_token = this.oauthService.getAccessToken();
@@ -44,14 +47,15 @@ var Oauth2CallbackComp = (function () {
         console.log(this.claims);
         this.oauth2callbackServ.getUserProfile(this.claims).subscribe(function (res) {
             var body = res.json();
-            console.log(body.res.user.profile);
+            console.log(body);
             if (!!body.res.user) {
                 _this.stateServ.cred = body.res;
                 _this.stateServ.userProfile = body.res.user.profile;
                 window.location.href = "/";
             }
             else {
-                console.log(body.res.res.given_name);
+                _this.waiting = false;
+                console.log(body.res.res);
                 _this.form.patchValue({ first_name: body.res.res.given_name });
                 _this.form.patchValue({ last_name: body.res.res.family_name });
                 _this.form.patchValue({ sub: body.res.res.sub });
@@ -59,7 +63,6 @@ var Oauth2CallbackComp = (function () {
                 _this.getUserInfo();
             }
             ;
-            _this.waiting = false;
         }, function (err) {
             console.error(err);
         });

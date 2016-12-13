@@ -1,4 +1,4 @@
-(ns components.models.token
+(ns components.models.account
   (:require
    [ak-dbg.core :refer :all]
    [components.core.config :as cfg]
@@ -11,6 +11,7 @@
 
 (hugsql/def-db-fns "components/sql/account.sql")
 
+;; #### TOKENS
 (defonce tokens (atom #{}))
 
 (sp/def ::min-token-create! #(and (string? %) (seq %)))
@@ -45,6 +46,7 @@
     (token-unsign token)
     false))
 
+;; #### OAUTH
 (defn oauth-get [params]
   (let [oauth-id (:sub params)
         user (by-oauth-user-read cfg/db {:oauth_id oauth-id})]
@@ -60,7 +62,6 @@
          :token (:res (token-create! username roles))}))))
 
 (defn oauth-set! [params]
-  (dbg params)
   (let [user 
             (jdbc/with-db-transaction [tx cfg/db]
               (try

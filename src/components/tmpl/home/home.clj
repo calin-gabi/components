@@ -7,14 +7,14 @@
   (response-wrap
    [:div#home.container-fluid
     [:div#navigation.col-md-12.container
-      [:div.col-md-4
+      [:div.col-lg-4
         {"*ngIf" "state.userProfile"}
         "Welcome home {{state.userProfile.first_name}} {{state.userProfile.last_name}}!"]
-      [:div.col-md-4]
-      [:div.col-md-4
-        [:button 
+      [:div.col-lg-7]
+      [:div.col-lg-1
+        [:button.btn
           {"(click)" "logout()"}
           "Logout"]]]
-    [:a {"routerLink" "/logout"} "Logout"]
+    #_[:a {"routerLink" "/logout"} "Logout"]
     #_[:chat]
    ]))

@@ -37,6 +37,10 @@ export class Oauth2CallbackComp implements OnInit {
                 private oauthService: OAuthService) {
     }
 
+    waitingLoad () {
+        return this.waiting;
+    }
+
     getUserInfo() {
         let access_token = this.oauthService.getAccessToken();
         this.oauth2callbackServ.getUserInfo(access_token).subscribe(
@@ -56,20 +60,20 @@ export class Oauth2CallbackComp implements OnInit {
         this.oauth2callbackServ.getUserProfile(this.claims).subscribe(
             (res: Response) => {
                 const body = res.json();
-                console.log(body.res.user.profile);
+                console.log(body);
                 if (!!body.res.user) {
                     this.stateServ.cred = body.res;
                     this.stateServ.userProfile = body.res.user.profile;
                     window.location.href = "/";
                 } else {
-                    console.log(body.res.res.given_name);
+                    this.waiting = false;
+                    console.log(body.res.res);
                     this.form.patchValue({first_name: body.res.res.given_name});
                     this.form.patchValue({last_name: body.res.res.family_name});
                     this.form.patchValue({sub: body.res.res.sub});
                     this.form.patchValue({iss: body.res.res.iss});
                     this.getUserInfo();
                 };
-                this.waiting = false;
             },
 
             (err: Response) => {
