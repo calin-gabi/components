@@ -5,8 +5,8 @@
 
 (defmethod template "home" [{:keys [] :as req}]
   (response-wrap
-   [:div#home.container-fluid
-    [:div#navigation.col-md-12.container
+   [:div#home
+    [:div#navigation
       [:div.col-lg-4
         {"*ngIf" "state.userProfile"}
         "Welcome home {{state.userProfile.first_name}} {{state.userProfile.last_name}}!"]

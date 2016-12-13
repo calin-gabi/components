@@ -42,7 +42,7 @@ var HomeComp = (function () {
         core_1.Component({
             selector: "home",
             templateUrl: "/template?type=home",
-            styleUrls: ["css/main.css"],
+            styleUrls: ["css/home.css"],
             encapsulation: core_1.ViewEncapsulation.None,
             providers: [home_serv_1.HomeServ, oauth_service_1.OAuthService]
         }), 

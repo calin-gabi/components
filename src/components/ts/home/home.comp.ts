@@ -11,7 +11,7 @@ import {ChatComp} from "../chat/chat.comp";
 @Component({
     selector: "home",
     templateUrl: "/template?type=home",
-    styleUrls: ["css/main.css"],
+    styleUrls: ["css/home.css"],
     encapsulation: ViewEncapsulation.None,
     providers: [HomeServ, OAuthService]
 })
