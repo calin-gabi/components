@@ -11,7 +11,7 @@
    [cuerdas.core :as str]
    [compojure.core :refer [context defroutes GET POST]]
    [components.core.config :as cfg]
-   [components.models.token :as db-token]
+   [components.models.account :as db-token]
    [hugsql.core :as hugsql]
    [mpg.core :as mpg]
    [ring.util.response :as response]
