@@ -55,42 +55,53 @@
 
 (defn login [{:keys [params] :as req}]
   (json/generate-string
-  (if (sp/valid? ::min-login params)
-    (jdbc/with-db-transaction [tx cfg/db]
-      (try
-        (let [username (str/lower (:username params))
-              password (:password params)
-              db-user (by-username-user-read tx {:username username})
-              roles (->> {:username username}
-                          (by-username-user-roles-read tx)
-                          (map :role))
-              db-user* (assoc db-user :roles roles)]
+    (if (sp/valid? ::min-login params)
+      (jdbc/with-db-transaction [tx cfg/db]
+        (try
+          (let [username (str/lower (:username params))
+                password (:password params)
+                db-user (by-username-user-read tx {:username username})
+                roles (->> {:username username}
+                            (by-username-user-roles-read tx)
+                            (map :role))
+                user-profile (by-user-userprofile-read tx {:username username})
+                db-user* (assoc db-user :roles roles :profile user-profile)]
 
-          (if db-user
-            ;; ## User found
-            (if (hashers/check password (:password db-user*))
-              ;; # Correct creds
-              (do
-                (login-update! tx {:username username})
-                {:stat :ok :res {:user (select-keys db-user* [:username :roles])
-                                  :token (:res (db-token/token-create! username roles))}})
-              ;; # Wrong creds
-              (do
-                (attempts-update! tx {:username username})
-                {:stat :err :msg "Wrong credentials"}))
-            ;; ## User not found
-            {:stat :err :msg "User not found"}))
+            (if db-user
+              ;; ## User found
+              (if (hashers/check password (:password db-user*))
+                ;; # Correct creds
+                (do
+                  (login-update! tx {:username username})
+                  {:stat :ok :res {:user (select-keys db-user* [:username :roles :profile])
+                                    :token (:res (db-token/token-create! username roles))}})
+                ;; # Wrong creds
+                (do
+                  (attempts-update! tx {:username username})
+                  {:stat :err :msg "Wrong credentials"}))
+              ;; ## User not found
+              {:stat :err :msg "User not found"}))
 
-        (catch Exception ex
-          (jdbc/db-set-rollback-only! tx)
-          (log/error (.getMessage ex))
-          {:stat :err :msg "DB error"})))
+          (catch Exception ex
+            (jdbc/db-set-rollback-only! tx)
+            (log/error (.getMessage ex))
+            {:stat :err :msg "DB error"})))
 
-    {:stat :err :msg "Insufficient data"})))     
+      {:stat :err :msg "Insufficient data"})))     
+
+(defn oauth-get [{:keys [params] :as req}]
+  (json/generate-string
+   (let [res (db-token/oauth-get params)]
+     {:stat :ok :res res})))
+
+(defn oauth-set! [{:keys [params] :as req}]
+  (json/generate-string
+   (let [res (db-token/oauth-set! (dbg params))]
+     {:stat :ok :res res})))
 
 (defn logout! [{:keys [params] :as req}]
   (json/generate-string
-   (let [res (db-token/token-remove! (:token (dbg params)))]
+   (let [res (db-token/token-remove! (:token params))]
      {:stat :ok})))
 
            
@@ -99,4 +110,6 @@
   (GET "/userexists/:username" req (user-exists? req))
   (POST "/register" req (register! req))
   (POST "/login" req (login req))
+  (POST "/oauth/get" req (oauth-get req))
+  (POST "/oauth/set" req (oauth-set! req))
   (POST "/logout" req (logout! req)))

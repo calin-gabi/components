@@ -15,6 +15,11 @@ WHERE username = :username;
 SELECT * FROM users
 WHERE email = :email;
 
+-- :name by-oauth-user-read :? :1
+SELECT users.* FROM users
+JOIN users_oauth ON users_oauth.username = users.username
+WHERE users_oauth.oauth_id = :oauth_id;
+
 -- :name user-create! :<! :1
 -- :doc registers user with username & password
 INSERT INTO users
@@ -99,3 +104,28 @@ AND role = :role;
 SELECT *
 FROM usersinroles
 WHERE username = :username;
+
+-- :name by-user-oauth-create! :<! :1
+INSERT INTO users
+(username, email)
+VALUES 
+(:username, :username)
+RETURNING *;
+
+-- :name by-user-useroauth-create! :<! :1
+INSERT INTO users_oauth
+(username, oauth_id, oauth_type)
+VALUES 
+(:username, :sub, :iss)
+RETURNING *;
+
+-- :name by-user-userprofile-read :? :1
+SELECT username, first_name, last_name FROM users_profile
+WHERE username = :username;
+
+-- :name by-user-userprofile-create! :<! :1
+INSERT INTO users_profile
+(username, first_name, last_name)
+VALUES 
+(:username, :first_name, :last_name)
+RETURNING *;

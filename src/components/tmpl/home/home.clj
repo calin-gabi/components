@@ -5,17 +5,16 @@
 
 (defmethod template "home" [{:keys [] :as req}]
   (response-wrap
-   [:div#home
-    [:div 
-    "Welcome home {{user.name}}!"
-      #_[:img 
-        {:src "{{user.picture}}"}]]
-    [:div ]
+   [:div#home.container-fluid
+    [:div#navigation.col-md-12.container
+      [:div.col-md-4
+        {"*ngIf" "state.userProfile"}
+        "Welcome home {{state.userProfile.first_name}} {{state.userProfile.last_name}}!"]
+      [:div.col-md-4]
+      [:div.col-md-4
+        [:button 
+          {"(click)" "logout()"}
+          "Logout"]]]
     [:a {"routerLink" "/logout"} "Logout"]
-    [:button 
-      {"(click)" "googleLogout()"}
-      "Google logout"]
-    [:chat]
-    
-
+    #_[:chat]
    ]))

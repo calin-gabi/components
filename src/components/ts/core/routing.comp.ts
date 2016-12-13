@@ -2,6 +2,7 @@ import {Routes, RouterModule} from "@angular/router";
 import {HomeComp} from "../home/home.comp";
 import {LoginComp} from "../account/login.comp";
 import {LogoutComp} from "../account/logout.comp";
+import {Oauth2CallbackComp} from "../account/oauth2callback.comp";
 import {RegisterComp} from "../account/register.comp";
 import {AuthServ} from "./auth.serv";
 
@@ -30,6 +31,10 @@ const appRoutes: Routes = [
         path: "logout",
         component: LogoutComp,
         canActivate: [AuthServ]
+    },
+    {
+        path: "oauth2callback",
+        component: Oauth2CallbackComp
     }
 ];
 

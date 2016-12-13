@@ -20,4 +20,5 @@
   (GET "/home" req (index-page req))
   (GET "/login" req (index-page req))
   (GET "/register" req (index-page req))
+  (GET "/oauth2callback" req (index-page req))
   (GET "/404" req "404: Page not found."))

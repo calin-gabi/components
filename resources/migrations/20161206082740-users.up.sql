@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS users (
   username VARCHAR (200) PRIMARY KEY,
-  password VARCHAR (2000) NOT NULL,
+  password VARCHAR (2000),
   last_login TIMESTAMP,
   attempts INT DEFAULT 0,
   lockoutDate TIMESTAMP,

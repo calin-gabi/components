@@ -3,6 +3,7 @@ var router_1 = require("@angular/router");
 var home_comp_1 = require("../home/home.comp");
 var login_comp_1 = require("../account/login.comp");
 var logout_comp_1 = require("../account/logout.comp");
+var oauth2callback_comp_1 = require("../account/oauth2callback.comp");
 var register_comp_1 = require("../account/register.comp");
 var auth_serv_1 = require("./auth.serv");
 var appRoutes = [
@@ -30,6 +31,10 @@ var appRoutes = [
         path: "logout",
         component: logout_comp_1.LogoutComp,
         canActivate: [auth_serv_1.AuthServ]
+    },
+    {
+        path: "oauth2callback",
+        component: oauth2callback_comp_1.Oauth2CallbackComp
     }
 ];
 exports.routing = router_1.RouterModule.forRoot(appRoutes);

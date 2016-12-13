@@ -20,6 +20,7 @@
 
 (require 'components.tmpl.account.login)
 (require 'components.tmpl.account.register)
+(require 'components.tmpl.account.account)
 (require 'components.tmpl.home.home)
 (require 'components.tmpl.chat.chat)
 

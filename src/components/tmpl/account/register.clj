@@ -7,7 +7,6 @@
   (response-wrap
    [:div#register
     [:div.container-fluid
-    [:div.register-form
      [:h3 "Register"]
 
      [:form
@@ -48,5 +47,5 @@
       [:button.btn.btn-register.center-block
        {"[disabled]" "!form.valid"
         :type "submit"}
-       "Register"]]]]]))
+       "Register"]]]]))
 

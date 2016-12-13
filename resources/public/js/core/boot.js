@@ -28,18 +28,19 @@ var MainComp = (function () {
         this.router = router;
         this.oauthService = oauthService;
         this.cfg = cfg;
-        this.oauthService.loginUrl = "https://accounts.google.com/o/oauth2/v2/auth";
-        this.oauthService.redirectUri = window.location.origin + "/home";
-        this.oauthService.clientId = "198071236552-1rurcpfidu8fmhorrdkk6nb450hfk1b6.apps.googleusercontent.com";
-        this.oauthService.scope = "profile https://www.googleapis.com/auth/plus.login";
-        this.oauthService.setStorage(localStorage);
-        this.oauthService.oidc = true;
+        this.oauthService.loginUrl = cfg.googleOauth.loginUrl;
+        this.oauthService.redirectUri = cfg.googleOauth.redirectUri;
+        this.oauthService.clientId = cfg.googleOauth.clientId;
+        this.oauthService.scope = cfg.googleOauth.scope;
+        if (cfg.googleOauth.localStorage) {
+            this.oauthService.setStorage(localStorage);
+        }
+        ;
+        this.oauthService.oidc = cfg.googleOauth.oidc;
         this.oauthService.tryLogin({});
     }
     MainComp.prototype.ngOnInit = function () {
         this.cfg.url = window.location.origin;
-        console.log(window.location);
-        console.log(this.cfg.url);
     };
     MainComp = __decorate([
         core_1.Component({

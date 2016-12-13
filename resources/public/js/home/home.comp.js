@@ -9,17 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var state_serv_1 = require("../core/state.serv");
 var oauth_service_1 = require("angular2-oauth2/oauth-service");
 var home_serv_1 = require("./home.serv");
 var HomeComp = (function () {
-    function HomeComp(stateServ, homeServ, oauthService) {
-        this.stateServ = stateServ;
+    function HomeComp(state, homeServ, router, oauthService) {
+        this.state = state;
         this.homeServ = homeServ;
+        this.router = router;
         this.oauthService = oauthService;
     }
-    HomeComp.prototype.googleLogout = function () {
+    HomeComp.prototype.logout = function () {
         this.oauthService.logOut();
+        this.router.navigate(["/logout"]);
     };
     Object.defineProperty(HomeComp.prototype, "user", {
         get: function () {
@@ -33,7 +36,7 @@ var HomeComp = (function () {
         configurable: true
     });
     HomeComp.prototype.ngOnInit = function () {
-        console.log("home");
+        this.state.userProfile = this.state.cred["user"]["profile"];
     };
     HomeComp = __decorate([
         core_1.Component({
@@ -43,7 +46,7 @@ var HomeComp = (function () {
             encapsulation: core_1.ViewEncapsulation.None,
             providers: [home_serv_1.HomeServ, oauth_service_1.OAuthService]
         }), 
-        __metadata('design:paramtypes', [state_serv_1.StateServ, home_serv_1.HomeServ, oauth_service_1.OAuthService])
+        __metadata('design:paramtypes', [state_serv_1.StateServ, home_serv_1.HomeServ, router_1.Router, oauth_service_1.OAuthService])
     ], HomeComp);
     return HomeComp;
 }());

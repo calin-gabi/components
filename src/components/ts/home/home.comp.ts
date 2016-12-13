@@ -18,17 +18,18 @@ import {ChatComp} from "../chat/chat.comp";
 
 export class HomeComp implements OnInit {
 
-    constructor(private stateServ: StateServ,
+    constructor(private state: StateServ,
                 private homeServ: HomeServ,
+                private router: Router,
                 private oauthService: OAuthService) {
     }
 
-    googleLogout() {
+    logout() {
         this.oauthService.logOut();
+        this.router.navigate(["/logout"]);
     }
 
     public get user() {
-
         let claims = this.oauthService.getIdentityClaims();
         if (!claims) return null;
         console.log(claims);
@@ -37,6 +38,7 @@ export class HomeComp implements OnInit {
 
     // #### EVENTS
     ngOnInit() {
-        console.log("home");
+        // console.log(this.state.cred);
+        this.state.userProfile = this.state.cred["user"]["profile"];
     }
 }

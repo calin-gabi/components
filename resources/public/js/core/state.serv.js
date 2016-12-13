@@ -16,6 +16,7 @@ var StateServ = (function () {
     function StateServ(ls) {
         this.ls = ls;
         this.lang = "en";
+        this.userProfile = {};
         this.chan = new core_1.EventEmitter();
         this._cred = {};
         this.onCred = new ReplaySubject_1.ReplaySubject();

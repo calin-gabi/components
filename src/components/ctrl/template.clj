@@ -23,4 +23,4 @@
     [:router-outlet]]))
 
 (defroutes template-routes
-  (GET "/template" req (dbg (template req))))
+  (GET "/template" req (template req)))

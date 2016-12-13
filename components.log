@@ -129,3 +129,18 @@
 16-12-08 07:36:20 UnknownHost INFO [components.core.boot:50] - Components started successfully on port 4016
 16-12-08 14:32:22 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
 16-12-11 16:04:40 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-12 07:05:19 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-12 12:25:14 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-12 18:52:03 HUMANOOABIsMBP2 INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-12 19:03:20 HUMANOOABIsMBP2 INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-12 19:03:45 HUMANOOABIsMBP2 ERROR [components.ctrl.template:18] - template not found: register
+16-12-13 07:32:04 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-13 08:52:03 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-13 10:42:21 UnknownHost ERROR [components.models.token:66] - Parameter Mismatch: :username parameter data not found.
+16-12-13 10:45:06 UnknownHost ERROR [components.models.token:66] - ERROR: null value in column "password" violates not-null constraint
+  Detail: Failing row contains (gabimunteanu.sdt@gmail.com, null, null, 0, null, f, gabimunteanu.sdt@gmail.com, f, null, f, t, 2016-12-13 11:45:06.073528, 0).
+16-12-13 12:41:45 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-13 12:46:29 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-13 12:50:38 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-13 13:00:56 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-13 13:45:34 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016

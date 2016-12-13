@@ -18,6 +18,7 @@ export class StateServ implements OnInit {
 
     // #### VARS
     public lang: string = "en";
+    public userProfile = {};
 
     @Output() public chan = new EventEmitter();
 

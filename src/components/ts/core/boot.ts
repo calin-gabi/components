@@ -39,22 +39,24 @@ export class MainComp implements OnInit {
                 private oauthService: OAuthService,
                 private cfg: Cfg) {
 
-        this.oauthService.loginUrl = "https://accounts.google.com/o/oauth2/v2/auth";
+        this.oauthService.loginUrl = cfg.googleOauth.loginUrl;
         // this.oauthService.logoutUrl = "https://steyer-identity-server.azurewebsites.net/identity/connect/endsession?id_token={{id_token}}";
-        this.oauthService.redirectUri = window.location.origin + "/home";
-        this.oauthService.clientId = "198071236552-1rurcpfidu8fmhorrdkk6nb450hfk1b6.apps.googleusercontent.com";
-        this.oauthService.scope = "profile https://www.googleapis.com/auth/plus.login";
+        this.oauthService.redirectUri = cfg.googleOauth.redirectUri;
+        this.oauthService.clientId = cfg.googleOauth.clientId;
+        this.oauthService.scope = cfg.googleOauth.scope;
         // this.oauthService.issuer = "https://steyer-identity-server.azurewebsites.net/identity";
-        this.oauthService.setStorage(localStorage);
-        this.oauthService.oidc = true;
+        if (cfg.googleOauth.localStorage) {
+            this.oauthService.setStorage(localStorage);
+        };
+        this.oauthService.oidc = cfg.googleOauth.oidc;
 
         this.oauthService.tryLogin({});
     }
 
     ngOnInit() {
         this.cfg.url = window.location.origin;
-        console.log(window.location);
-        console.log(this.cfg.url);
+        // console.log(window.location);
+        // console.log(this.cfg.url);
     }
 }
 
