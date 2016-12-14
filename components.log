@@ -145,3 +145,17 @@
 16-12-13 13:00:56 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
 16-12-13 13:45:34 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
 16-12-13 17:14:40 HUMANOOABIsMBP2 INFO [components.core.boot:51] - Components started successfully on port 4016
+16-12-14 10:07:01 UnknownHost INFO [components.core.boot:51] - Components started successfully on port 4016
+16-12-14 10:52:16 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-14 11:00:27 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-14 11:07:21 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-14 11:21:52 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-14 11:23:51 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-14 12:10:02 UnknownHost ERROR [components.ctrl.smtp:16] - Wrong number of args (1) passed to: core/build-email
+16-12-14 12:10:00 UnknownHost ERROR [components.ctrl.smtp:16] - Wrong number of args (1) passed to: core/build-email
+16-12-14 12:49:41 UnknownHost ERROR [components.ctrl.smtp:22] - Wrong number of args (0) passed to: PersistentVector
+16-12-14 12:50:20 UnknownHost ERROR [components.ctrl.smtp:22] - Wrong number of args (0) passed to: PersistentVector
+16-12-14 12:50:23 UnknownHost ERROR [components.ctrl.smtp:22] - Wrong number of args (0) passed to: PersistentVector
+16-12-14 12:51:40 UnknownHost ERROR [components.ctrl.smtp:22] - Wrong number of args (0) passed to: PersistentVector
+16-12-14 12:52:04 UnknownHost ERROR [components.ctrl.smtp:22] - Wrong number of args (0) passed to: PersistentVector
+16-12-14 13:01:01 UnknownHost ERROR [components.ctrl.smtp:22] - No implementation of method: :eval-part of protocol: #'postal.message/PartEval found for class: java.lang.String

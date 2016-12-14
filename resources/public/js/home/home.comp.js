@@ -11,18 +11,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var state_serv_1 = require("../core/state.serv");
+var smtp_serv_1 = require("../core/smtp.serv");
 var oauth_service_1 = require("angular2-oauth2/oauth-service");
 var home_serv_1 = require("./home.serv");
 var HomeComp = (function () {
-    function HomeComp(state, homeServ, router, oauthService) {
+    function HomeComp(state, homeServ, router, oauthService, smtp) {
         this.state = state;
         this.homeServ = homeServ;
         this.router = router;
         this.oauthService = oauthService;
+        this.smtp = smtp;
     }
     HomeComp.prototype.logout = function () {
         this.oauthService.logOut();
         this.router.navigate(["/logout"]);
+    };
+    HomeComp.prototype.sendTestEmail = function () {
+        var obj = { from: "office@softdata.ro",
+            to: ["gabimunteanu.sdt@gmail.com"],
+            subject: "Test",
+            name: "Gabriel" };
+        this.smtp.sendEmail(obj).subscribe(function (res) {
+            var body = res.json();
+            console.log(body);
+        }, function (err) {
+            console.log(err);
+        });
     };
     Object.defineProperty(HomeComp.prototype, "user", {
         get: function () {
@@ -46,7 +60,7 @@ var HomeComp = (function () {
             encapsulation: core_1.ViewEncapsulation.None,
             providers: [home_serv_1.HomeServ, oauth_service_1.OAuthService]
         }), 
-        __metadata('design:paramtypes', [state_serv_1.StateServ, home_serv_1.HomeServ, router_1.Router, oauth_service_1.OAuthService])
+        __metadata('design:paramtypes', [state_serv_1.StateServ, home_serv_1.HomeServ, router_1.Router, oauth_service_1.OAuthService, smtp_serv_1.SmtpServ])
     ], HomeComp);
     return HomeComp;
 }());

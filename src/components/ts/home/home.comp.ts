@@ -4,6 +4,7 @@ import {Router, ActivatedRoute, NavigationEnd} from "@angular/router";
 import {Response} from "@angular/http";
 import {Cfg} from "../core/config";
 import {StateServ, Cred} from "../core/state.serv";
+import {SmtpServ} from "../core/smtp.serv";
 import {OAuthService} from "angular2-oauth2/oauth-service";
 import {HomeServ} from "./home.serv";
 import {ChatComp} from "../chat/chat.comp";
@@ -21,7 +22,8 @@ export class HomeComp implements OnInit {
     constructor(private state: StateServ,
                 private homeServ: HomeServ,
                 private router: Router,
-                private oauthService: OAuthService) {
+                private oauthService: OAuthService,
+                private smtp: SmtpServ) {
     }
 
     logout() {
@@ -29,6 +31,21 @@ export class HomeComp implements OnInit {
         this.router.navigate(["/logout"]);
     }
 
+    sendTestEmail() {
+        let obj = {from: "office@softdata.ro",
+                    to: ["gabimunteanu.sdt@gmail.com"],
+                    subject: "Test",
+                    name: "Gabriel"};
+        this.smtp.sendEmail(obj).subscribe(
+            (res: Response) => {
+                const body = res.json();
+                console.log(body);
+            },
+            (err: Response) => {
+                console.log(err);
+            }
+        );
+    }
     public get user() {
         let claims = this.oauthService.getIdentityClaims();
         if (!claims) return null;

@@ -4,6 +4,7 @@ import {LocalStorageComp} from "./storage.comp";
 import {Cfg} from "./config";
 import {AuthServ} from "./auth.serv";
 import {StateServ} from "./state.serv";
+import {SmtpServ} from "./smtp.serv";
 
 @NgModule({
     imports: [BrowserModule],
@@ -12,7 +13,7 @@ import {StateServ} from "./state.serv";
 
     declarations: [],
 
-    providers: [LocalStorageComp, AuthServ, StateServ],
+    providers: [LocalStorageComp, AuthServ, StateServ, SmtpServ],
 
     bootstrap: []
 })

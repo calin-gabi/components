@@ -10,7 +10,10 @@
       [:div.col-md-4
         {"*ngIf" "state.userProfile"}
         "Welcome home {{state.userProfile.first_name}} {{state.userProfile.last_name}}!"]
-      [:div.col-md-7]
+      [:div.col-md-7
+        [:button.btn 
+          {"(click)" "sendTestEmail()"}
+          "Test email"]]
       [:div.col-md-1
         [:button.btn
           {"(click)" "logout()"}

@@ -14,3 +14,7 @@
                  "&password=2vE7kG4fG.@w9T"))
 
 (def trusted-algs #{:bcrypt+sha512})
+
+(def smtp {:host "mail.softdata.ro"
+           :user "office@softdata.ro"
+           :pass "softy1964"})

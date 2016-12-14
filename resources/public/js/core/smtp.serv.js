@@ -8,26 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
-var storage_comp_1 = require("./storage.comp");
-var auth_serv_1 = require("./auth.serv");
-var state_serv_1 = require("./state.serv");
-var smtp_serv_1 = require("./smtp.serv");
-var CoreModule = (function () {
-    function CoreModule() {
+var http_1 = require("@angular/http");
+var SmtpServ = (function () {
+    function SmtpServ(http) {
+        this.http = http;
     }
-    CoreModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            exports: [],
-            declarations: [],
-            providers: [storage_comp_1.LocalStorageComp, auth_serv_1.AuthServ, state_serv_1.StateServ, smtp_serv_1.SmtpServ],
-            bootstrap: []
-        }), 
-        __metadata('design:paramtypes', [])
-    ], CoreModule);
-    return CoreModule;
+    SmtpServ.prototype.sendEmail = function (obj) {
+        var url = "/smtp/send";
+        var body = JSON.stringify(obj);
+        var headers = new http_1.Headers({ "Content-Type": "application/json" });
+        var opts = { headers: headers };
+        return this.http.post(url, body, opts);
+    };
+    SmtpServ = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], SmtpServ);
+    return SmtpServ;
 }());
-exports.CoreModule = CoreModule;
-//# sourceMappingURL=core.module.js.map
+exports.SmtpServ = SmtpServ;
+//# sourceMappingURL=smtp.serv.js.map
