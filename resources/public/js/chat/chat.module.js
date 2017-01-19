@@ -11,13 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var chat_comp_1 = require("./chat.comp");
+var forms_1 = require("@angular/forms");
 var chat_serv_1 = require("./chat.serv");
 var ChatModule = (function () {
     function ChatModule() {
     }
     ChatModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule],
             exports: [chat_comp_1.ChatComp],
             declarations: [chat_comp_1.ChatComp],
             providers: [chat_serv_1.ChatServ],

@@ -1,6 +1,7 @@
 import {ReplaySubject} from "rxjs/ReplaySubject";
 import {Component, ViewEncapsulation, OnInit, OnDestroy, Inject} from "@angular/core";
 import {Router, ActivatedRoute, NavigationEnd} from "@angular/router";
+import {BrowserModule} from "@angular/platform-browser";
 import {Response} from "@angular/http";
 import {Cfg} from "../core/config";
 import {StateServ, Cred} from "../core/state.serv";
@@ -19,6 +20,9 @@ import {ChatComp} from "../chat/chat.comp";
 
 export class HomeComp implements OnInit {
 
+    private emailTo = "";
+    private name = "";
+
     constructor(private state: StateServ,
                 private homeServ: HomeServ,
                 private router: Router,
@@ -32,10 +36,12 @@ export class HomeComp implements OnInit {
     }
 
     sendTestEmail() {
+        // this.emailTo = "gabimunteanu.sdt@gmail.com";
+        console.log(this.emailTo);
         let obj = {from: "office@softdata.ro",
-                    to: ["gabimunteanu.sdt@gmail.com"],
+                    to: [this.emailTo],
                     subject: "Test",
-                    name: "Gabriel"};
+                    name: this.name};
         this.smtp.sendEmail(obj).subscribe(
             (res: Response) => {
                 const body = res.json();
@@ -55,7 +61,7 @@ export class HomeComp implements OnInit {
 
     // #### EVENTS
     ngOnInit() {
-        // console.log(this.state.cred);
+        console.log(this.state.cred);
         this.state.userProfile = this.state.cred["user"]["profile"];
     }
 }

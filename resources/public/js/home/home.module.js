@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var platform_browser_1 = require("@angular/platform-browser");
 var common_1 = require("@angular/common");
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var home_comp_1 = require("./home.comp");
 var chat_module_1 = require("../chat/chat.module");
@@ -19,7 +20,7 @@ var HomeModule = (function () {
     }
     HomeModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, common_1.CommonModule, router_1.RouterModule, chat_module_1.ChatModule],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, common_1.CommonModule, router_1.RouterModule, chat_module_1.ChatModule],
             exports: [home_comp_1.HomeComp],
             declarations: [home_comp_1.HomeComp],
             providers: [],

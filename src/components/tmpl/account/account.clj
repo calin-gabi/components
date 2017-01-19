@@ -1,6 +1,7 @@
 (ns components.tmpl.account.account
   (:require
    [ak-dbg.core :refer :all]
+   [clojure.walk :as walk]
    [components.ctrl.template :refer [template response-wrap]]))
 
 (defmethod template "login" [{:keys [] :as req}]
@@ -54,7 +55,7 @@
 
 (defmethod template "register" [{:keys [] :as req}]
   (response-wrap
-   [:div#register.hvr-glow
+   [:div#register.hvr-grow-shadow
     [:div.container-fluid
      [:h3 "Register"]
 
@@ -66,8 +67,14 @@
       [:input.username.form-control
        {:formControlName "username"
         "[placeholder]" "'Username'"
+        "(focus)" "onFocus()"
+        "(blur)" "onBlur()"
         :required ""
         :autofocus ""}]]
+      [:div.row
+        [:div.col-sm-12.text-danger
+          {"*ngIf" "!form.controls['username'].valid && showErrMsg"}
+          "You must provide a valid email!"]]
 
 
        [:fieldset
@@ -77,6 +84,8 @@
           [:div.form-group
            [:input.form-control
             {:formControlName "password"
+              "(focus)" "onFocus()"
+              "(blur)" "onBlur()"
              :required ""
              :type "password"
              :placeholder "Password"}]]]
@@ -85,13 +94,15 @@
           [:div.form-group
            [:input.form-control
             {:formControlName "password_rep"
+              "(focus)" "onFocus()"
+              "(blur)" "onBlur()"
              :required ""
              :type "password"
-             :placeholder "Password"}]]]]]
-
-      [:div.text-danger
-       {"*ngIf" "errMsg"}
-       "{{errMsg}}"]
+             :placeholder "Password"}]]]]
+        [:div.row
+          [:div.col-sm-12.text-danger
+            {"*ngIf" "!form.controls['passwords'].valid && showErrMsg"}
+            "The passwords provided do not match!"]]]
 
       [:button.btn.btn-register.center-block
        {"[disabled]" "!form.valid"
@@ -101,12 +112,13 @@
 (defmethod template "registerconfirmation" [{:keys [] :as req}]
   (response-wrap
    [:div#register-confirmation
-    "Register confirmation"]))
+    "An email has been send to you. Please confirm the email address to gain access."]))
 
-(defmethod template "emailconfirmation" [{:keys [] :as req}]
+(defmethod template "emailconfirmation" [{:keys [headers] :as req}]
+ (:referer (walk/keywordize-keys headers))
   (response-wrap
    [:div#email-confirmation
-    "Register"]))
+    "Congrats. Your email has been confirmed!"]))
 
 (defmethod template "forgotpassword" [{:keys [] :as req}]
   (response-wrap

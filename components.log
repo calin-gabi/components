@@ -159,3 +159,199 @@
 16-12-14 12:51:40 UnknownHost ERROR [components.ctrl.smtp:22] - Wrong number of args (0) passed to: PersistentVector
 16-12-14 12:52:04 UnknownHost ERROR [components.ctrl.smtp:22] - Wrong number of args (0) passed to: PersistentVector
 16-12-14 13:01:01 UnknownHost ERROR [components.ctrl.smtp:22] - No implementation of method: :eval-part of protocol: #'postal.message/PartEval found for class: java.lang.String
+16-12-14 13:23:00 UnknownHost ERROR [components.ctrl.smtp:22] - nil
+16-12-14 13:50:51 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-14 13:56:47 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-14 14:16:07 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-14 14:19:09 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-14 14:20:22 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-14 14:20:44 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-14 14:21:14 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-14 14:22:04 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-14 14:33:47 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-14 15:02:36 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-15 07:27:23 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-15 07:46:26 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-15 07:47:46 UnknownHost INFO [components.core.boot:52] - Components started successfully on port 4016
+16-12-15 07:49:16 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-15 07:51:11 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-15 07:54:16 UnknownHost INFO [components.core.boot:54] - Components started successfully on port 4016
+16-12-15 07:59:02 UnknownHost INFO [components.core.boot:54] - Components started successfully on port 4016
+16-12-15 08:34:22 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+16-12-15 09:57:21 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-15 10:43:53 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-15 10:46:24 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-15 14:53:51 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-15 15:00:01 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-15 15:01:58 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+16-12-25 15:40:31 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-19 09:29:58 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-19 09:36:27 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 09:41:24 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 09:42:16 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 09:42:28 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 09:43:23 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:00:14 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:00:33 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:01:07 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:02:38 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:03:58 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:05:02 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:06:56 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:07:29 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:08:06 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:23:34 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:24:27 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:25:31 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:25:54 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:26:23 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:26:31 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:29:17 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:36:26 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 10:36:25 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 10:40:02 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-19 10:40:44 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 10:43:57 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-19 10:44:07 UnknownHost INFO [components.ctrl.chat:70] - nil :connected
+17-01-19 10:49:15 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 10:49:14 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 11:58:09 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 11:58:08 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 12:02:02 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 12:02:00 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 12:02:27 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 12:02:28 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 12:02:59 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-19 12:03:08 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 12:04:22 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 12:04:21 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 12:04:53 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 12:05:31 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 12:06:02 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 12:06:03 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 12:07:06 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 12:07:07 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 12:09:06 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-19 12:09:16 UnknownHost INFO [components.ctrl.chat:69] - nil :connected
+17-01-19 12:12:13 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 12:12:11 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 12:14:40 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 12:14:41 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 12:16:45 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 12:16:43 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 12:19:40 UnknownHost INFO [components.ctrl.chat:91] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 12:19:41 UnknownHost INFO [components.ctrl.chat:70] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 12:23:54 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 12:23:53 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:23:49 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:24:17 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:24:49 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:24:50 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:25:07 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:25:09 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:25:51 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:25:52 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:28:45 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:28:43 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:29:08 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:29:16 UnknownHost INFO [components.ctrl.chat:69] - gabriel.munteanu@e-therapists.de :connected
+17-01-19 13:29:19 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:29:20 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:30:12 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:30:10 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:35:02 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-19 13:35:14 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:37:03 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:37:01 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:37:55 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:37:56 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:38:42 UnknownHost INFO [components.ctrl.chat:69] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:38:39 UnknownHost INFO [components.ctrl.chat:90] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:48:20 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:48:18 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:49:19 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:49:20 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:49:44 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-19 13:50:06 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:52:55 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 13:52:56 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:53:50 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-19 13:54:26 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:54:46 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->/0:0:0:0:0:0:0:1:51526
+17-01-19 13:54:49 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 13:55:22 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-19 13:55:34 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:00:44 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:00:45 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:01:03 UnknownHost INFO [components.ctrl.chat:73] - gabriel.munteanu@e-therapists.de :connected
+17-01-19 14:01:05 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:01:07 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:02:08 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:02:10 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:07:43 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:09:25 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:10:14 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:10:16 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:10:47 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:10:45 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:12:27 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:12:29 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:12:51 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:12:52 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:13:47 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:13:45 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:14:12 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:14:13 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:16:20 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:16:21 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:17:26 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:17:25 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:19:15 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:19:17 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:20:51 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:20:52 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:21:12 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:21:13 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:21:25 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:21:26 UnknownHost INFO [components.ctrl.chat:73] - gabriel.munteanu@e-therapists.de :connected
+17-01-19 14:21:35 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:21:36 UnknownHost INFO [components.ctrl.chat:73] - gabriel.munteanu@e-therapists.de :connected
+17-01-19 14:21:38 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:21:39 UnknownHost INFO [components.ctrl.chat:73] - gabriel.munteanu@e-therapists.de :connected
+17-01-19 14:21:43 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:21:46 UnknownHost INFO [components.ctrl.chat:73] - gabriel.munteanu@e-therapists.de :connected
+17-01-19 14:21:59 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:21:56 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:22:09 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:22:12 UnknownHost INFO [components.ctrl.chat:73] - gabriel.munteanu@e-therapists.de :connected
+17-01-19 14:24:50 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:24:54 UnknownHost INFO [components.ctrl.chat:73] - gabriel.munteanu@e-therapists.de :connected
+17-01-19 14:26:55 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:26:57 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:27:41 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:27:42 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:29:21 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:29:19 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:29:36 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:29:38 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:29:52 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:29:53 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:30:21 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:30:20 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:32:52 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:32:51 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:38:40 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:38:42 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:41:33 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:41:30 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:42:35 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:42:37 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:43:57 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:43:58 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:44:41 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:44:44 UnknownHost INFO [components.ctrl.chat:73] - gabriel.munteanu@e-therapists.de :connected
+17-01-19 14:44:57 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 14:45:00 UnknownHost INFO [components.ctrl.chat:73] - gabimunteanu.sdt@gmail.com :connected
+17-01-19 14:47:07 UnknownHost INFO [components.ctrl.chat:73] - gabriel.munteanu@e-therapists.de :connected
+17-01-19 15:25:13 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-19 15:25:43 UnknownHost INFO [components.ctrl.chat:94] - :going-away 0.0.0.0/0.0.0.0:4016<->null

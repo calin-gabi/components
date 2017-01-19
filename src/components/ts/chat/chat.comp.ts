@@ -27,9 +27,11 @@ declare var $: any;
 
 export class ChatComp implements OnInit, OnDestroy {
     private paramSub: Subscription;
-    private url = "ws://localhost:5028/chat";
+    private url = "ws://localhost:4016/chat";
     private con = new WebSocket(this.url);
     private messages = [];
+    private clients = [];
+    private client = {username: "", online: false};
     private messageToSend: string = "";
     private id: number;
 
@@ -59,6 +61,25 @@ export class ChatComp implements OnInit, OnDestroy {
         );
     }
 
+    clientsGet() {
+        const obj = {};
+        this.chatServ.clientsGet(obj).subscribe(
+            (res: Response) => {
+                const body = res.json();
+                this.clients = body.res;
+                console.log(this.clients);
+                this.scrollBottom();
+            },
+            (err: Response) => {
+                console.log(err);
+            }
+        );
+    }
+
+    selectClient(client) {
+        this.client = client;
+    }
+
     //  #### CHAT
     keyDown = function (event) {
         if (event.key === "Enter") {
@@ -73,7 +94,6 @@ export class ChatComp implements OnInit, OnDestroy {
     scrollBottom() {
         setTimeout(() => {
             const container = $(".message-container")[0];
-            console.log(container);
             const height = container.scrollHeight;
             $(".message-container").scrollTop(height);
         }, 200);
@@ -93,10 +113,10 @@ export class ChatComp implements OnInit, OnDestroy {
         if (msg === "") {
             return true;
         }
-        const reciever = "boring";
         //  $("#reciever").val();
         const token = this.state.token;
-        const obj = JSON.stringify({token: token, receivers: [reciever], payload: {msg: msg}});
+        const obj = JSON.stringify({token: token, sender: this.state.cred["user"].username, receivers: [this.client], payload: {msg: msg}});
+        console.log(obj);
         this.con.send(obj);
         this.messages.push({sUsername: "trainer", payload: {msg: msg}});
         this.messageToSend = "";
@@ -106,8 +126,9 @@ export class ChatComp implements OnInit, OnDestroy {
     // #### EVENTS
     ngOnInit() {
         //  ## Websockets
+        this.clientsGet();
         this.con.onopen = (e) => {
-            const obj = {method: "handshake", token: this.state.token};
+            const obj = {method: "handshake", sender: this.state.cred["user"].username, token: this.state.token, payload: {msg: "handshake"}};
             const jsonObj = JSON.stringify(obj);
             this.con.send(jsonObj);
         };
@@ -118,6 +139,7 @@ export class ChatComp implements OnInit, OnDestroy {
 
         this.con.onmessage = (e) => {
             const resp = JSON.parse(e.data);
+            console.log(resp);
 
             if (resp.method === "handshake") {
                 // console.log("handshake");

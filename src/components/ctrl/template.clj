@@ -20,6 +20,8 @@
 (defmethod template "main" [{:keys [] :as req}]
   (response-wrap
    [:div
+    #_[:input 
+      {"[(ngModel)]" "testng"}]
     [:router-outlet]]))
 
 (defroutes template-routes

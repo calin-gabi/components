@@ -15,6 +15,8 @@ var router_1 = require("@angular/router");
 var login_comp_1 = require("./login.comp");
 var logout_comp_1 = require("./logout.comp");
 var register_comp_1 = require("./register.comp");
+var registerconfirmation_comp_1 = require("./registerconfirmation.comp");
+var emailconfirmation_comp_1 = require("./emailconfirmation.comp");
 var oauth2callback_comp_1 = require("./oauth2callback.comp");
 var ng2_uploader_1 = require("ng2-uploader");
 var AccountModule = (function () {
@@ -23,8 +25,8 @@ var AccountModule = (function () {
     AccountModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule, forms_1.ReactiveFormsModule, router_1.RouterModule],
-            exports: [login_comp_1.LoginComp, logout_comp_1.LogoutComp, register_comp_1.RegisterComp, oauth2callback_comp_1.Oauth2CallbackComp],
-            declarations: [login_comp_1.LoginComp, logout_comp_1.LogoutComp, register_comp_1.RegisterComp, oauth2callback_comp_1.Oauth2CallbackComp, ng2_uploader_1.UPLOAD_DIRECTIVES],
+            exports: [login_comp_1.LoginComp, logout_comp_1.LogoutComp, register_comp_1.RegisterComp, registerconfirmation_comp_1.RegisterConfirmationComp, emailconfirmation_comp_1.EmailConfirmationComp, oauth2callback_comp_1.Oauth2CallbackComp],
+            declarations: [login_comp_1.LoginComp, logout_comp_1.LogoutComp, register_comp_1.RegisterComp, registerconfirmation_comp_1.RegisterConfirmationComp, emailconfirmation_comp_1.EmailConfirmationComp, oauth2callback_comp_1.Oauth2CallbackComp, ng2_uploader_1.UPLOAD_DIRECTIVES],
             providers: [],
             bootstrap: []
         }), 

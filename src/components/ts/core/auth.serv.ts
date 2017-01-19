@@ -46,6 +46,15 @@ export class AuthServ implements CanActivate {
             return true;
         }
 
+        if (url === "/registerconfirmation") {
+            return true;
+        }
+
+        if (url === "/emailconfirmation") {
+            return true;
+        }
+
+
         if (url === "/logout") {
             return true;
         }

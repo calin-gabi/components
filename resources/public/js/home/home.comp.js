@@ -21,16 +21,19 @@ var HomeComp = (function () {
         this.router = router;
         this.oauthService = oauthService;
         this.smtp = smtp;
+        this.emailTo = "";
+        this.name = "";
     }
     HomeComp.prototype.logout = function () {
         this.oauthService.logOut();
         this.router.navigate(["/logout"]);
     };
     HomeComp.prototype.sendTestEmail = function () {
+        console.log(this.emailTo);
         var obj = { from: "office@softdata.ro",
-            to: ["gabimunteanu.sdt@gmail.com"],
+            to: [this.emailTo],
             subject: "Test",
-            name: "Gabriel" };
+            name: this.name };
         this.smtp.sendEmail(obj).subscribe(function (res) {
             var body = res.json();
             console.log(body);
@@ -50,6 +53,7 @@ var HomeComp = (function () {
         configurable: true
     });
     HomeComp.prototype.ngOnInit = function () {
+        console.log(this.state.cred);
         this.state.userProfile = this.state.cred["user"]["profile"];
     };
     HomeComp = __decorate([

@@ -5,10 +5,14 @@
    [cheshire.core :as json]
    [clojure.java.io :as io]
    [clojure.spec :as sp]
-   [compojure.core :refer [defroutes routes GET POST]]
+   [compojure.core :refer [defroutes context routes GET POST]]
+   [components.core.config :as cfg]
+   [hugsql.core :as hugsql]
    [org.httpkit.server :as kit]
    [taoensso.encore :as enc]
    [taoensso.timbre :as log]))
+
+(hugsql/def-db-fns "components/sql/account.sql")
 
 ;; #### WEB SOCKETS
 (def clients (atom {}))
@@ -41,7 +45,7 @@
         user-channels (->> (get @clients username)
                            (map first)
                            (remove #(= % channel)))
-        receivers-channels (->> (map #(get @clients %) receivers)
+        receivers-channels (->> (map #(get @clients (:username %)) receivers)
                                 (map keys)
                                 (flatten))
         all-channels (concat user-channels receivers-channels)
@@ -68,18 +72,18 @@
     (let [username (:sender msg)]
       (log/info username :connected)
       (swap! clients channel-add! username chan)
-      (kit/send! chan (json/generate-string {:method "handshake" :stat :ok})))
+      (kit/send! chan (json/generate-string {:method "handshake" :clients @clients :stat :ok})))
 
     "Not authorized"))
 
 (defn on-receive [channel msg]
-  (let [msg* (json/parse-string msg true)
+  (let [msg* (dbg (json/parse-string msg true))
         username (:sender msg*)
         receivers (:receivers msg*)]
 
     (if (= (:method msg*) "handshake")
       (let []
-        (handshake! username channel))
+        (handshake! channel msg*))
 
       (let [payload {:msg (get-in msg* [:payload :msg])}]
         (to-all-send! "chat-msg" username channel receivers payload)
@@ -101,5 +105,23 @@
 
     (ws-only-warning)))
 
+(defn user-online? [client]
+  (let [chn (get @clients (:username client))
+        online (if (some? chn)
+                true
+                false)
+        client* (assoc client :online online)]
+        client*))
+  
+(defn get-clients [{:keys [identity] :as req}]
+  (json/generate-string
+    (let [username (:username identity)
+          clients (dbg (clients-read cfg/db {:username username}))
+          res (map user-online? clients)]
+     {:stat :ok :res res})))
+
 (defroutes chat-routes
-  (GET "/chat" req (ws-handler req)))
+  (context "/chat" [req]
+    (GET "/" req (ws-handler req))
+    (POST "/clients" req (get-clients req))
+    (POST "/messages" req (get-clients req))))

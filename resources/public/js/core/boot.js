@@ -28,6 +28,7 @@ var MainComp = (function () {
         this.router = router;
         this.oauthService = oauthService;
         this.cfg = cfg;
+        this.testng = "";
         this.oauthService.loginUrl = cfg.googleOauth.loginUrl;
         this.oauthService.redirectUri = cfg.googleOauth.redirectUri;
         this.oauthService.clientId = cfg.googleOauth.clientId;

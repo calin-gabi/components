@@ -10,14 +10,24 @@
       [:div.col-md-4
         {"*ngIf" "state.userProfile"}
         "Welcome home {{state.userProfile.first_name}} {{state.userProfile.last_name}}!"]
-      [:div.col-md-7
-        [:button.btn 
-          {"(click)" "sendTestEmail()"}
-          "Test email"]]
+      [:div.col-md-7]
       [:div.col-md-1
         [:button.btn
           {"(click)" "logout()"}
           "Logout"]]]
     #_[:a {"routerLink" "/logout"} "Logout"]
-    #_[:chat]
+    [:div.container-fluid
+      [:div.col-md-3 "Testing emails"
+        [:input 
+          {"[(ngModel)]" "emailTo"
+            "placeholder" "email address"}]
+        [:input 
+          {"[(ngModel)]" "name"
+            "placeholder" "name"}]
+        [:button.btn 
+          {"(click)" "sendTestEmail()"}
+          "Send"]]
+      [:div.col-md-9
+        "Testing chat"
+        [:chat]]]
    ]))

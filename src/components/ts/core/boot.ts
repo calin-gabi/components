@@ -33,7 +33,7 @@ import {routing} from "./routing.comp";
 
 @Injectable()
 export class MainComp implements OnInit {
-
+    private testng = "";
     constructor(private stateServ: StateServ,
                 private router: Router,
                 private oauthService: OAuthService,

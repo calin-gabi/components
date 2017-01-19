@@ -9,21 +9,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var state_serv_1 = require("../core/state.serv");
 var http_1 = require("@angular/http");
 var ChatServ = (function () {
-    function ChatServ(http) {
+    function ChatServ(http, state) {
         this.http = http;
+        this.state = state;
     }
     ChatServ.prototype.messagesGet = function (obj) {
-        var url = "/chat/messages/get";
+        var url = "/chat/messages";
         var body = JSON.stringify(obj);
-        var headers = new http_1.Headers({ "Content-Type": "application/json" });
+        var token = this.state.cred.token;
+        var headers = new http_1.Headers({ "Content-Type": "application/json",
+            "Authorization": "Token " + token });
+        var opts = { headers: headers };
+        return this.http.post(url, body, opts);
+    };
+    ChatServ.prototype.clientsGet = function (obj) {
+        var url = "/chat/clients";
+        var body = JSON.stringify(obj);
+        var token = this.state.cred.token;
+        var headers = new http_1.Headers({ "Content-Type": "application/json",
+            "Authorization": "Token " + token });
         var opts = { headers: headers };
         return this.http.post(url, body, opts);
     };
     ChatServ = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, state_serv_1.StateServ])
     ], ChatServ);
     return ChatServ;
 }());

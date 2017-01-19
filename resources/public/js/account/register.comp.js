@@ -22,6 +22,7 @@ var RegisterComp = (function () {
         this.registerServ = registerServ;
         this.submitted = false;
         this.errMsg = "";
+        this.showErrMsg = false;
         this.onCred = new ReplaySubject_1.ReplaySubject();
     }
     RegisterComp.prototype.areNotEqual = function (control) {
@@ -29,7 +30,25 @@ var RegisterComp = (function () {
         var password = controls["password"];
         var password_rep = controls["password_rep"];
         var ok = !password_rep.touched || (password.value === password_rep.value);
-        return ok ? null : { areEqual: true };
+        console.log(this);
+        if (!!password_rep.touched && (password.value === password_rep.value)) {
+        }
+        else {
+        }
+        ;
+        if (ok) {
+            return { areEqual: false };
+        }
+        else {
+            return { areEqual: true };
+        }
+        ;
+    };
+    RegisterComp.prototype.onFocus = function () {
+        this.showErrMsg = false;
+    };
+    RegisterComp.prototype.onBlur = function () {
+        this.showErrMsg = true;
     };
     RegisterComp.prototype.usedUsername = function (control) {
         var _this = this;
@@ -38,10 +57,19 @@ var RegisterComp = (function () {
                 resolve(null);
                 return;
             }
+            var emailRegEx = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$");
+            if (!emailRegEx.test(control.value)) {
+                _this.errMsg = "You must provide a valid email address!";
+                return;
+            }
+            else {
+                _this.errMsg = "";
+            }
             _this.registerServ.isUsedUsername(control.value).subscribe(function (res) {
                 var body = res.json();
                 var stat = body.stat;
                 if (body.res) {
+                    _this.errMsg = "User exists!";
                     resolve({ usedUsername: true });
                 }
                 else {
@@ -68,12 +96,14 @@ var RegisterComp = (function () {
         });
     };
     RegisterComp.prototype.submit = function () {
+        var _this = this;
         this.submitted = true;
         var obj = this.form.value;
         this.registerServ.save(obj).subscribe(function (res) {
             var body = res.json();
             console.log(res);
             var stat = body.stat;
+            _this.router.navigate["/registerconfirmation"];
         }, function (err) {
             console.error(err);
         });

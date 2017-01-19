@@ -29,9 +29,11 @@ var ChatComp = (function () {
         this.state = state;
         this.authServ = authServ;
         this.chatServ = chatServ;
-        this.url = "ws://localhost:5028/chat";
+        this.url = "ws://localhost:4016/chat";
         this.con = new WebSocket(this.url);
         this.messages = [];
+        this.clients = [];
+        this.client = { username: "", online: false };
         this.messageToSend = "";
         this.keyDown = function (event) {
             if (event.key === "Enter") {
@@ -52,13 +54,27 @@ var ChatComp = (function () {
             console.log(err);
         });
     };
+    ChatComp.prototype.clientsGet = function () {
+        var _this = this;
+        var obj = {};
+        this.chatServ.clientsGet(obj).subscribe(function (res) {
+            var body = res.json();
+            _this.clients = body.res;
+            console.log(_this.clients);
+            _this.scrollBottom();
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    ChatComp.prototype.selectClient = function (client) {
+        this.client = client;
+    };
     ChatComp.prototype.messageParse = function (msg) {
         return '<div class="msg">' + msg + "</div>";
     };
     ChatComp.prototype.scrollBottom = function () {
         setTimeout(function () {
             var container = $(".message-container")[0];
-            console.log(container);
             var height = container.scrollHeight;
             $(".message-container").scrollTop(height);
         }, 200);
@@ -73,9 +89,9 @@ var ChatComp = (function () {
         if (msg === "") {
             return true;
         }
-        var reciever = "boring";
         var token = this.state.token;
-        var obj = JSON.stringify({ token: token, receivers: [reciever], payload: { msg: msg } });
+        var obj = JSON.stringify({ token: token, sender: this.state.cred["user"].username, receivers: [this.client], payload: { msg: msg } });
+        console.log(obj);
         this.con.send(obj);
         this.messages.push({ sUsername: "trainer", payload: { msg: msg } });
         this.messageToSend = "";
@@ -83,8 +99,9 @@ var ChatComp = (function () {
     };
     ChatComp.prototype.ngOnInit = function () {
         var _this = this;
+        this.clientsGet();
         this.con.onopen = function (e) {
-            var obj = { method: "handshake", token: _this.state.token };
+            var obj = { method: "handshake", sender: _this.state.cred["user"].username, token: _this.state.token, payload: { msg: "handshake" } };
             var jsonObj = JSON.stringify(obj);
             _this.con.send(jsonObj);
         };
@@ -93,6 +110,7 @@ var ChatComp = (function () {
         };
         this.con.onmessage = function (e) {
             var resp = JSON.parse(e.data);
+            console.log(resp);
             if (resp.method === "handshake") {
                 return;
             }

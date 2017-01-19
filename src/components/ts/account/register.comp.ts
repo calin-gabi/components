@@ -21,7 +21,9 @@ export class RegisterComp implements OnInit, OnDestroy {
 
     private submitted: boolean = false;
 
-    private errMsg: string = "";
+    public errMsg: string = "";
+
+    private showErrMsg = false;
 
     public onCred: ReplaySubject<any> = new ReplaySubject();
 
@@ -36,12 +38,31 @@ export class RegisterComp implements OnInit, OnDestroy {
         const password = controls["password"];
         const password_rep = controls["password_rep"];
         const ok = !password_rep.touched || (password.value === password_rep.value);
-
-        return ok ? null : {areEqual: true};
+        console.log(this);
+        if (!!password_rep.touched && (password.value === password_rep.value)) {
+            // console.log(this.errMsg);
+            // this.errMsg = "";
+        } else {
+            // console.log(this.errMsg);
+            // this.errMsg = "The passwords provided are not the same!";
+        };
+        if (ok) {
+            return {areEqual: false};
+        } else {
+            return {areEqual: true};
+        };
     }
 
+    onFocus() {
+        this.showErrMsg = false;
+    }
+
+    onBlur() {
+        this.showErrMsg = true;
+    }
 
     usedUsername(control: FormControl): Promise<any> {
+
         let p = new Promise((resolve, reject) => {
 
             if (!control.value) {
@@ -49,11 +70,20 @@ export class RegisterComp implements OnInit, OnDestroy {
                 return;
             }
 
+            const emailRegEx = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$");
+            if (!emailRegEx.test(control.value)) {
+                this.errMsg = "You must provide a valid email address!";
+                return;
+            } else {
+                this.errMsg = "";
+            }
+
             this.registerServ.isUsedUsername(control.value).subscribe(
                 (res: Response) => {
                     const body = res.json();
                     const stat = body.stat;
                     if (body.res) {
+                        this.errMsg = "User exists!";
                         resolve({usedUsername: true});
                     }
                     else {
@@ -96,6 +126,7 @@ export class RegisterComp implements OnInit, OnDestroy {
                 const body = res.json();
                 console.log(res);
                 const stat = body.stat;
+                this.router.navigate["/registerconfirmation"];
             },
 
             (err: Response) => {

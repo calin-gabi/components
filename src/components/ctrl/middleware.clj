@@ -3,9 +3,14 @@
    [ak-checker.core :refer [ok?]]
    [ak-dbg.core :refer :all]
    [ak-request.core :as ak-request]
+   [buddy.auth.accessrules :refer [wrap-access-rules] :as rules]
+   [buddy.auth.backends :as backends]
+   [buddy.hashers :as hashers]
+   [buddy.auth.middleware :refer [wrap-authentication]]
    [cheshire.core :as json]
    [components.core.config :as cfg]
    [compojure.core :refer [defroutes routes GET POST]]
+   [components.models.token :as db-token]
    [hugsql.core :as hugsql]
    [ring.middleware.defaults :refer [site-defaults api-defaults wrap-defaults]]
    [ring.middleware.format-params :refer [wrap-restful-params]]
@@ -30,13 +35,21 @@
 
          {:security {:anti-forgery false}}))
 
+;; #### AUTH
+;; ## Authentication
+(defn token-expand [req token]
+  (let [res (db-token/identity-get token)]
+   (or res false)))
+
+(def backend (backends/token {:authfn token-expand}))
+
 ;; #### MIDDLEWARE
 (defn middleware [handler]
   (-> handler
       (wrap-keyword-params)
       (wrap-restful-params)
       #_(wrap-access-rules {:rules rules :on-error on-error})
-      #_(wrap-authentication backend)
+      (wrap-authentication backend)
       #_(log-request)
       #_(wrap-restful-format :formats [:json-kw :edn])
       (wrap-defaults ring-defaults*)
