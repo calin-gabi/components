@@ -4,6 +4,7 @@
    [ak-dbg.core :refer :all]
    [cheshire.core :as json]
    [clojure.java.io :as io]
+   [clojure.java.jdbc :as jdbc]
    [clojure.spec :as sp]
    [compojure.core :refer [defroutes context routes GET POST]]
    [components.core.config :as cfg]
@@ -13,6 +14,8 @@
    [taoensso.timbre :as log]))
 
 (hugsql/def-db-fns "components/sql/account.sql")
+
+(hugsql/def-db-fns "components/sql/chat.sql")
 
 ;; #### WEB SOCKETS
 (def clients (atom {}))
@@ -77,7 +80,7 @@
     "Not authorized"))
 
 (defn on-receive [channel msg]
-  (let [msg* (dbg (json/parse-string msg true))
+  (let [msg* (json/parse-string msg true)
         username (:sender msg*)
         receivers (:receivers msg*)]
 
@@ -112,13 +115,41 @@
                 false)
         client* (assoc client :online online)]
         client*))
+
+(defn client_thread [threads client]
+  (let [thread (dbg (filter (fn [t] (= (dbg (:username (dbg t))) (:username client))) (dbg threads)))
+        has_thread (if (= (count thread) 0)
+                      false
+                      true)
+        client* (assoc client :thread_id (:id (first thread)))]
+      client*))
   
 (defn get-clients [{:keys [identity] :as req}]
   (json/generate-string
     (let [username (:username identity)
           clients (dbg (clients-read cfg/db {:username username}))
-          res (map user-online? clients)]
+          threads (by-username-threads-read cfg/db {:username username})
+          clients* (map #(client_thread threads %) clients)
+          res (map user-online? clients*)]
      {:stat :ok :res res})))
+
+;; #### THREADS
+
+(defn open-thread [username client]
+  (let [thread (by-username-threads-read cfg/db {:username username :client client})
+        thread* (if (some? thread)
+                  thread
+                  (jdbc/with-db-transaction [tx cfg/db]
+                   (try 
+                    (let [thread_ (thread-add! tx {:owner nil :name ""})
+                          thread_u (threads-client-add! tx {:thread_id (:id thread_) :username username :status nil})
+                          thread_c (threads-client-add! tx {:thread_id (:id thread_) :username client :status nil})]
+                      thread_)
+                    (catch Exception ex
+                      (jdbc/db-set-rollback-only! tx)
+                      (log/error (.getMessage ex))
+                      {:stat :err :msg "DB error"}))))]
+        thread*))
 
 (defroutes chat-routes
   (context "/chat" [req]
