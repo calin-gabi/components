@@ -35,8 +35,11 @@ chat{
                         bottom: 0;
                         width: 100%;
 
-                        .message {
-                            float: left;
+                        .message {
+                            text-align: left;
+                            .my-message {
+                                text-align: right;
+                            }
                         }
                     }
                 }

@@ -21,8 +21,8 @@
               [:div.message.inline
                 {"*ngFor" "let message of messages;"}
                 [:div.inline
-                  {"[class.my-message]" "message.sUsername === 'trainer'"}
-                  [:span "{{message.payload.msg}}"]]]]]]
+                  {"[class.my-message]" "myMessage(message)"}
+                  [:span "{{message.message}}"]]]]]]
 
         [:div.footer
           [:div.send-text.inline

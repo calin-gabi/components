@@ -35,19 +35,24 @@ var ChatComp = (function () {
         this.clients = [];
         this.client = { username: "", online: false };
         this.messageToSend = "";
+        this.lastmsg_id = 0;
         this.keyDown = function (event) {
             if (event.key === "Enter") {
                 this.send();
             }
         };
     }
-    ChatComp.prototype.messagesGet = function (traineeId) {
+    ChatComp.prototype.myMessage = function (message) {
+        return this.state.cred["user"].username === message.username;
+    };
+    ChatComp.prototype.messagesGet = function (client) {
         var _this = this;
         var trainerId = this.state.cred.id;
         var token = this.state.token;
-        var obj = { token: token, trainerId: trainerId, traineeId: traineeId };
+        var obj = { client: client, lastmsg_id: this.lastmsg_id };
         this.chatServ.messagesGet(obj).subscribe(function (res) {
             var body = res.json();
+            console.log(body);
             _this.messages = body.res;
             _this.scrollBottom();
         }, function (err) {
@@ -68,6 +73,7 @@ var ChatComp = (function () {
     };
     ChatComp.prototype.selectClient = function (client) {
         this.client = client;
+        this.messagesGet(this.client);
     };
     ChatComp.prototype.messageParse = function (msg) {
         return '<div class="msg">' + msg + "</div>";
@@ -81,6 +87,7 @@ var ChatComp = (function () {
     };
     ChatComp.prototype.recieve = function (msg) {
         var sUsername = msg.sUsername, payload = msg.payload;
+        console.log(msg);
         this.messages.push({ sUsername: sUsername, payload: payload });
         this.scrollBottom();
     };
@@ -90,7 +97,7 @@ var ChatComp = (function () {
             return true;
         }
         var token = this.state.token;
-        var obj = JSON.stringify({ token: token, sender: this.state.cred["user"].username, receivers: [this.client], payload: { msg: msg } });
+        var obj = JSON.stringify({ token: token, sender: this.state.cred["user"].username, receivers: [this.client], payload: { msg: msg }, method: "chat-msg" });
         console.log(obj);
         this.con.send(obj);
         this.messages.push({ sUsername: "trainer", payload: { msg: msg } });
@@ -111,14 +118,15 @@ var ChatComp = (function () {
         this.con.onmessage = function (e) {
             var resp = JSON.parse(e.data);
             console.log(resp);
-            if (resp.method === "handshake") {
-                return;
+            switch (resp.method) {
+                case "handshake":
+                    return;
+                case "chat-msg":
+                    _this.recieve(resp);
+                default:
+                    return;
             }
-            ;
-            _this.recieve(resp);
         };
-    };
-    ChatComp.prototype.ngOnDestroy = function () {
     };
     ChatComp = __decorate([
         core_1.Component({

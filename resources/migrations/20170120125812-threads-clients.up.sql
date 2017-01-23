@@ -3,5 +3,6 @@ CREATE TABLE IF NOT EXISTS threads_clients (
     thread_id INTEGER REFERENCES threads(id) ON DELETE CASCADE ON UPDATE CASCADE,
     username VARCHAR(200) UNIQUE REFERENCES users(username),
     status VARCHAR(200),
-    created TIMESTAMP default now()
+    created TIMESTAMP default now(),
+    UNIQUE (thread_id, username) INITIALLY DEFERRED
 );

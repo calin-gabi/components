@@ -425,3 +425,164 @@
 17-01-20 14:10:14 UnknownHost INFO [components.ctrl.chat:76] - gabriel.munteanu@e-therapists.de :connected
 17-01-20 14:11:23 UnknownHost INFO [components.ctrl.chat:97] - :going-away 0.0.0.0/0.0.0.0:4016<->null
 17-01-20 14:11:36 UnknownHost INFO [components.ctrl.chat:97] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 07:33:23 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 07:34:01 UnknownHost INFO [components.ctrl.chat:76] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 07:37:29 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 07:44:05 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:76] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 07:44:46 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 07:45:08 UnknownHost INFO [components.ctrl.chat:76] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 07:47:40 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 07:47:54 UnknownHost INFO [components.ctrl.chat:76] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 07:56:55 UnknownHost INFO [components.ctrl.chat:97] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 07:56:56 UnknownHost INFO [components.ctrl.chat:76] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 07:57:01 UnknownHost INFO [components.ctrl.chat:97] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 07:57:03 UnknownHost INFO [components.ctrl.chat:76] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 08:44:02 UnknownHost INFO [components.ctrl.chat:97] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 09:05:56 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 09:07:54 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 09:09:34 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 09:09:46 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 09:10:57 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 09:11:07 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 09:11:58 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 09:11:57 UnknownHost INFO [components.ctrl.chat:136] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 09:12:06 UnknownHost ERROR [components.ctrl.chat:55] - Wrong number of args (2) passed to: chat/save-thread-msg
+17-01-23 09:12:57 UnknownHost ERROR [components.ctrl.chat:55] - Wrong number of args (2) passed to: chat/save-thread-msg
+17-01-23 09:13:35 UnknownHost ERROR [components.ctrl.chat:55] - Wrong number of args (2) passed to: chat/save-thread-msg
+17-01-23 09:16:28 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 09:16:44 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 09:16:53 UnknownHost ERROR [components.ctrl.chat:35] - No hstore extension installed.
+17-01-23 09:16:53 UnknownHost ERROR [components.ctrl.chat:55] - ERROR: syntax error at or near "'unseen'"
+  Position: 56
+17-01-23 09:18:11 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 09:18:35 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 09:18:40 UnknownHost ERROR [components.ctrl.chat:35] - No hstore extension installed.
+17-01-23 09:20:10 UnknownHost ERROR [components.ctrl.chat:35] - No hstore extension installed.
+17-01-23 09:21:05 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 09:25:39 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 09:25:47 UnknownHost ERROR [components.ctrl.chat:35] - No hstore extension installed.
+17-01-23 09:27:20 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 09:27:35 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 09:27:40 UnknownHost ERROR [components.ctrl.chat:35] - No hstore extension installed.
+17-01-23 09:28:52 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 09:29:03 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 09:31:58 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 09:32:11 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 09:33:42 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 09:33:54 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 09:36:29 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 10:20:55 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 10:22:12 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 10:27:35 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 10:49:05 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 10:49:04 UnknownHost INFO [components.ctrl.chat:136] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 10:49:13 UnknownHost INFO [components.ctrl.chat:136] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 10:49:15 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 10:54:46 UnknownHost INFO [components.ctrl.chat:136] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 10:54:49 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 12:00:51 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 12:01:06 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 12:01:17 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:136] - :going-away 0.0.0.0/0.0.0.0:4016<->/0:0:0:0:0:0:0:1:49618
+17-01-23 12:01:19 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 12:42:28 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 12:42:57 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 12:43:04 UnknownHost INFO [components.ctrl.chat:136] - :going-away /0:0:0:0:0:0:0:1:4016<->/0:0:0:0:0:0:0:1:49445
+17-01-23 12:43:06 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 13:25:36 UnknownHost INFO [components.ctrl.chat:135] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 13:25:37 UnknownHost INFO [components.ctrl.chat:114] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 13:28:10 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 13:28:11 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 13:35:41 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 13:35:55 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 13:36:17 UnknownHost INFO [components.ctrl.chat:134] - :going-away /0:0:0:0:0:0:0:1:4016<->/0:0:0:0:0:0:0:1:50977
+17-01-23 13:36:18 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 13:36:30 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 13:36:31 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 13:42:47 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 13:45:10 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 13:45:18 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 13:45:21 UnknownHost INFO [components.ctrl.chat:134] - :going-away /0:0:0:0:0:0:0:1:4016<->/0:0:0:0:0:0:0:1:51413
+17-01-23 13:45:23 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:05:53 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 14:06:06 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:10:38 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:10:37 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:11:00 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:11:01 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:15:35 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 14:16:04 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:19:47 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 14:20:27 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:22:07 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 14:22:18 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:22:38 UnknownHost INFO [components.ctrl.chat:134] - :going-away /0:0:0:0:0:0:0:1:4016<->/0:0:0:0:0:0:0:1:55207
+17-01-23 14:22:39 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:23:14 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 14:23:23 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:25:23 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 14:25:31 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:26:10 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:134] - :going-away /0:0:0:0:0:0:0:1:4016<->/0:0:0:0:0:0:0:1:55374
+17-01-23 14:26:11 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:29:21 UnknownHost INFO [components.core.boot:53] - Components started successfully on port 4016
+17-01-23 14:30:23 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:31:29 UnknownHost INFO [components.ctrl.chat:113] - gabriel.munteanu@e-therapists.de :connected
+17-01-23 14:31:59 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:32:03 UnknownHost INFO [components.ctrl.chat:113] - gabriel.munteanu@e-therapists.de :connected
+17-01-23 14:33:19 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:33:18 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:34:06 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:34:07 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:35:11 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:35:12 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:35:20 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:35:20 UnknownHost INFO [components.ctrl.chat:113] - gabriel.munteanu@e-therapists.de :connected
+17-01-23 14:45:30 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:45:31 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:47:58 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:48:01 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:48:48 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:48:54 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:49:47 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:49:46 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:54:20 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:54:19 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:55:19 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:55:21 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:56:21 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:56:25 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:56:48 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:56:49 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:57:13 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:57:15 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:58:17 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:58:18 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:58:45 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:58:46 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:59:03 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:59:04 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 14:59:32 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 14:59:33 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:00:24 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:01:13 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:02:43 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:02:42 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:03:24 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:03:26 HUMANOO-GABIs-MacBook-Pro-2.local INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:03:56 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:03:57 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:04:44 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:04:46 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:23:03 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:23:04 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:23:15 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:23:17 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:23:41 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:23:42 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:24:08 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:24:07 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:26:51 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:26:50 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:29:42 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected
+17-01-23 15:29:41 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:32:13 UnknownHost INFO [components.ctrl.chat:134] - :going-away 0.0.0.0/0.0.0.0:4016<->null
+17-01-23 15:32:15 UnknownHost INFO [components.ctrl.chat:113] - gabimunteanu.sdt@gmail.com :connected

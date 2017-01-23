@@ -25,7 +25,7 @@ declare var $: any;
     providers: []
 })
 
-export class ChatComp implements OnInit, OnDestroy {
+export class ChatComp implements OnInit {
     private paramSub: Subscription;
     private url = "ws://localhost:4016/chat";
     private con = new WebSocket(this.url);
@@ -34,6 +34,7 @@ export class ChatComp implements OnInit, OnDestroy {
     private client = {username: "", online: false};
     private messageToSend: string = "";
     private id: number;
+    private lastmsg_id = 0;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -43,16 +44,20 @@ export class ChatComp implements OnInit, OnDestroy {
                 private chatServ: ChatServ) {
     }
 
+    myMessage(message) {
+        return this.state.cred["user"].username === message.username;
+    }
+
     //  #### DATA
-    messagesGet(traineeId) {
+    messagesGet(client) {
         const trainerId = this.state.cred.id;
         const token = this.state.token;
-        const obj = {token: token, trainerId: trainerId, traineeId: traineeId};
+        const obj = {client: client, lastmsg_id: this.lastmsg_id};
         this.chatServ.messagesGet(obj).subscribe(
             (res: Response) => {
                 const body = res.json();
+                console.log(body);
                 this.messages = body.res;
-                // console.log(this.messages);
                 this.scrollBottom();
             },
             (err: Response) => {
@@ -78,6 +83,7 @@ export class ChatComp implements OnInit, OnDestroy {
 
     selectClient(client) {
         this.client = client;
+        this.messagesGet(this.client);
     }
 
     //  #### CHAT
@@ -101,8 +107,7 @@ export class ChatComp implements OnInit, OnDestroy {
 
     recieve(msg) {
         let {sUsername, payload} = msg;
-        // var tag = this.messageParse(msg);
-        // $("#chat-board .messages-list").append(tag);
+        console.log(msg);
         this.messages.push({sUsername: sUsername, payload: payload});
         this.scrollBottom();
     }
@@ -115,7 +120,7 @@ export class ChatComp implements OnInit, OnDestroy {
         }
         //  $("#reciever").val();
         const token = this.state.token;
-        const obj = JSON.stringify({token: token, sender: this.state.cred["user"].username, receivers: [this.client], payload: {msg: msg}});
+        const obj = JSON.stringify({token: token, sender: this.state.cred["user"].username, receivers: [this.client], payload: {msg: msg}, method: "chat-msg"});
         console.log(obj);
         this.con.send(obj);
         this.messages.push({sUsername: "trainer", payload: {msg: msg}});
@@ -141,16 +146,14 @@ export class ChatComp implements OnInit, OnDestroy {
             const resp = JSON.parse(e.data);
             console.log(resp);
 
-            if (resp.method === "handshake") {
-                // console.log("handshake");
-                return;
-            };
-
-            this.recieve(resp);
+            switch (resp.method) {
+                case "handshake":
+                    return;
+                case "chat-msg":
+                    this.recieve(resp);
+                default:
+                    return;
+            }
         };
-    }
-
-    ngOnDestroy() {
-        // this.paramSub.unsubscribe();
     }
 }

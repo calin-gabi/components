@@ -17,6 +17,43 @@
 
 (hugsql/def-db-fns "components/sql/chat.sql")
 
+;; #### THREADS
+
+(defn open-thread [username client]
+  (let [thread (by-client-thread-read cfg/db {:username username :client client})
+        thread* (if (some? thread)
+                  thread
+                  (jdbc/with-db-transaction [tx cfg/db]
+                   (try 
+                    (let [thread_ (dbg (thread-add! tx {:owner nil :name ""}))
+                          thread_u (threads-client-add! tx (dbg {:thread_id (:id thread_) :username username :status nil}))
+                          thread_c (threads-client-add! tx (dbg {:thread_id (:id thread_) :username client :status nil}))
+                          thread_ (by-client-thread-read tx {:username username :client client})]
+                      thread_)
+                    (catch Exception ex
+                      (jdbc/db-set-rollback-only! tx)
+                      (log/error (.getMessage ex))
+                      {:stat :err :msg "DB error"}))))]
+        thread*))
+
+(defn save-thread-msg! [username receiver message tx]
+  (let [thread (open-thread (dbg username) receiver)
+        saved-msg (thread-msg-insert! tx {:threadclient_id (:userthread_id thread) :message message})]
+        true))
+
+(defn save-msg! [msg]
+  (let [username (:sender msg)
+        receivers (:receivers msg)
+        message (:msg (:payload msg ))]
+        (jdbc/with-db-transaction [tx cfg/db]
+          (try
+            (doseq [receiver receivers]
+              (save-thread-msg! username (:username receiver) message tx))
+            (catch Exception ex
+              (jdbc/db-set-rollback-only! tx)
+              (log/error (.getMessage ex))
+              {:stat :err :msg "DB error"})))))
+
 ;; #### WEB SOCKETS
 (def clients (atom {}))
 
@@ -80,18 +117,18 @@
     "Not authorized"))
 
 (defn on-receive [channel msg]
-  (let [msg* (json/parse-string msg true)
+  (let [msg* (dbg (json/parse-string msg true))
         username (:sender msg*)
         receivers (:receivers msg*)]
 
-    (if (= (:method msg*) "handshake")
-      (let []
-        (handshake! channel msg*))
+    (case (dbg (:method msg*))
+      "handshake" (handshake! channel msg*)
 
-      (let [payload {:msg (get-in msg* [:payload :msg])}]
-        (to-all-send! "chat-msg" username channel receivers payload)
-        #_(queue/msg-add! msg)
-        #_(send! client-id recievers msg)))))
+      "chat-msg"    (let [payload {:msg (get-in msg* [:payload :msg])}
+                                saved (save-msg! msg*)]
+                            (to-all-send! "chat-msg" username channel receivers payload)
+                            #_(queue/msg-add! msg)
+                            #_(send! client-id recievers msg)))))
 
 (defn on-close [channel status]
   (log/info status channel))
@@ -117,7 +154,7 @@
         client*))
 
 (defn client_thread [threads client]
-  (let [thread (dbg (filter (fn [t] (= (dbg (:username (dbg t))) (:username client))) (dbg threads)))
+  (let [thread (filter (fn [t] (= (dbg (:username (dbg t))) (:username client))) threads)
         has_thread (if (= (count thread) 0)
                       false
                       true)
@@ -127,32 +164,23 @@
 (defn get-clients [{:keys [identity] :as req}]
   (json/generate-string
     (let [username (:username identity)
-          clients (dbg (clients-read cfg/db {:username username}))
-          threads (by-username-threads-read cfg/db {:username username})
+          clients (clients-read cfg/db {:username username})
+          threads (dbg (by-username-threads-read cfg/db {:username username}))
           clients* (map #(client_thread threads %) clients)
           res (map user-online? clients*)]
      {:stat :ok :res res})))
 
-;; #### THREADS
-
-(defn open-thread [username client]
-  (let [thread (by-username-threads-read cfg/db {:username username :client client})
-        thread* (if (some? thread)
-                  thread
-                  (jdbc/with-db-transaction [tx cfg/db]
-                   (try 
-                    (let [thread_ (thread-add! tx {:owner nil :name ""})
-                          thread_u (threads-client-add! tx {:thread_id (:id thread_) :username username :status nil})
-                          thread_c (threads-client-add! tx {:thread_id (:id thread_) :username client :status nil})]
-                      thread_)
-                    (catch Exception ex
-                      (jdbc/db-set-rollback-only! tx)
-                      (log/error (.getMessage ex))
-                      {:stat :err :msg "DB error"}))))]
-        thread*))
+(defn get-messages [{:keys [identity params] :as req}]
+  (json/generate-string
+    (let [username (:username identity)
+          client (:username (:client params))
+          lastmsg-id (:lastmsg_id params)
+          thread (dbg (open-thread username client))
+          messages (thread-msg-read cfg/db {:thread_id (:id thread) :lastmsg_id lastmsg-id :records 20})]
+    {:res (dbg messages)})))
 
 (defroutes chat-routes
   (context "/chat" [req]
     (GET "/" req (ws-handler req))
     (POST "/clients" req (get-clients req))
-    (POST "/messages" req (get-clients req))))
+    (POST "/messages" req (get-messages req))))
