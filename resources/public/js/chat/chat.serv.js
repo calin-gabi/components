@@ -34,6 +34,16 @@ var ChatServ = (function () {
         var opts = { headers: headers };
         return this.http.post(url, body, opts);
     };
+    ChatServ.prototype.usersGet = function (obj) {
+        var url = "/chat/clients/search";
+        var body = JSON.stringify(obj);
+        var token = this.state.cred.token;
+        var headers = new http_1.Headers({ "Content-Type": "application/json",
+            "Authorization": "Token " + token });
+        var opts = { headers: headers };
+        console.log(body);
+        return this.http.post(url, body, opts);
+    };
     ChatServ = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http, state_serv_1.StateServ])

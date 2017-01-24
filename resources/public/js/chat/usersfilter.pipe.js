@@ -8,26 +8,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
-var chat_comp_1 = require("./chat.comp");
-var forms_1 = require("@angular/forms");
-var usersfilter_pipe_1 = require("./usersfilter.pipe");
-var chat_serv_1 = require("./chat.serv");
-var ChatModule = (function () {
-    function ChatModule() {
+var UsersFilterPipe = (function () {
+    function UsersFilterPipe() {
     }
-    ChatModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule],
-            exports: [chat_comp_1.ChatComp],
-            declarations: [chat_comp_1.ChatComp, usersfilter_pipe_1.UsersFilterPipe],
-            providers: [chat_serv_1.ChatServ],
-            bootstrap: []
+    UsersFilterPipe.prototype.transform = function (value, args) {
+        var filter = args.toLowerCase();
+        if (filter) {
+            return value.filter(function (user) {
+                var name = user.username;
+                return name.toLowerCase().indexOf(filter) !== -1;
+            });
+        }
+        else {
+            return value;
+        }
+    };
+    UsersFilterPipe = __decorate([
+        core_1.Pipe({
+            name: "usersFilter"
         }), 
         __metadata('design:paramtypes', [])
-    ], ChatModule);
-    return ChatModule;
+    ], UsersFilterPipe);
+    return UsersFilterPipe;
 }());
-exports.ChatModule = ChatModule;
-//# sourceMappingURL=chat.module.js.map
+exports.UsersFilterPipe = UsersFilterPipe;
+//# sourceMappingURL=usersfilter.pipe.js.map

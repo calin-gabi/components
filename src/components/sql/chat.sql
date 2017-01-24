@@ -1,3 +1,21 @@
+-- :name clients-read :? :*
+SELECT threads_user_clients.client FROM threads_user_clients
+WHERE username = :username;
+
+-- :name clients-search :? :*
+SELECT users.username, threads_user_clients.id FROM users
+LEFT JOIN threads_user_clients ON threads_user_clients.client = users.username
+WHERE users.username LIKE '%' || :usersfilter || '%' AND users.username != :username;
+
+-- :name client-insert! :<1 :1
+INSERT INTO threads_user_clients(username, client)
+VALUES (:username, :client)
+RETURNING *;
+
+-- :name client-delete! :! :1
+DELETE FROM threads_user_clients
+WHERE id = :id;
+
 -- :name by-username-threads-read :? :*
 SELECT ut_1.id, ut_1.username, ut_2.threadclient_id AS userthread_id, ut_1.threadclient_id AS receiverthread_id
 FROM user_threads AS ut_1
@@ -28,7 +46,13 @@ WHERE tc_1.username = :username AND tc_2.username = :receiver
 
 -- :name thread-msg-insert! :<1 :1
 INSERT INTO threads_messages(threadclient_id, message, status)
-VALUES (:threadclient_id, :message, 'unseen')
+VALUES (:threadclient_id, :message, 'send')
+RETURNING *;
+
+-- :name thread-msg-upd! :<1 :1
+UPDATE threads_messages
+SET status = :status
+WHERE id = :id
 RETURNING *;
 
 -- :name thread-msg-read :? :*

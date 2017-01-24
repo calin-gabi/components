@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS threads_messages (
     type VARCHAR(200),
     message VARCHAR(2000),
     status VARCHAR(200),
-    created TIMESTAMP default now()
+    created TIMESTAMP without time zone default (now() at time zone 'utc')
 );

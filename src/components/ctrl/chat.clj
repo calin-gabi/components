@@ -98,6 +98,15 @@
 (defn allowed? [channel msg]
   true)
 
+(defn reply-send! [method username payload]
+  (let [user-channels (->> (get @clients username)
+                           (map first))
+        msg (json/generate-string {:method method :sUsername username :payload payload})]
+
+    (doseq [chan user-channels
+            :when (channel-online? chan)]
+      (kit/send! chan msg))))
+
 (defn send! [chan msg]
   (let [{:keys [sender receivers token payload timestamp status chan_id]} msg]
 
@@ -125,10 +134,12 @@
       "handshake" (handshake! channel msg*)
 
       "chat-msg"    (let [payload {:msg (get-in msg* [:payload :msg])}
-                                saved (save-msg! msg*)]
-                            (to-all-send! "chat-msg" username channel receivers payload)
-                            #_(queue/msg-add! msg)
-                            #_(send! client-id recievers msg)))))
+                          msg_ (save-msg! msg*)
+                          msg_ (assoc (msg*) :timestamp (:created msg*))
+                          msg_send (reply-send! "msg-status" username {:msg msg_})]
+                      (to-all-send! "chat-msg" username channel receivers payload)
+                      #_(queue/msg-add! msg)
+                      #_(send! client-id recievers msg)))))
 
 (defn on-close [channel status]
   (log/info status channel))
@@ -179,8 +190,29 @@
           messages (thread-msg-read cfg/db {:thread_id (:id thread) :lastmsg_id lastmsg-id :records 20})]
     {:res (dbg messages)})))
 
+(defn search-clients [{:keys [identity params] :as req}]
+  (json/generate-string
+    (let [username (:username identity)
+          usersfilter (:usersfilter params)
+          res (clients-search cfg/db (dbg {:username username :usersfilter usersfilter}))]
+        {:res res})))
+
+(defn select-client [{:keys [identity params] :as req}]
+  (json/generate-string
+    (let [username (:username identity)
+          client (:username params)
+          selected (:selected params)
+          id (:id params)
+          res (if selected
+                (client-insert! cfg/db {:username username :client client})
+                (client-delete! cfg/db {:id id}))]
+        {:res res})))
+
 (defroutes chat-routes
   (context "/chat" [req]
     (GET "/" req (ws-handler req))
-    (POST "/clients" req (get-clients req))
+    (context "/clients" [req]
+      (POST "/" req (get-clients req))
+      (POST "/search" req (search-clients req))
+      (POST "/select" req (select-client req)))
     (POST "/messages" req (get-messages req))))

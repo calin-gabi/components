@@ -15,6 +15,8 @@ import {Cfg} from "../core/config";
 import {StateServ, Cred} from "../core/state.serv";
 import {AuthServ} from "../core/auth.serv";
 import {ChatServ} from "./chat.serv";
+import {UsersFilterPipe} from "./usersfilter.pipe";
+import * as moment from "moment";
 declare var $: any;
 
 @Component({
@@ -35,6 +37,9 @@ export class ChatComp implements OnInit {
     private messageToSend: string = "";
     private id: number;
     private lastmsg_id = 0;
+    private users = [];
+    private users_filter = "";
+    private filterTo = null;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -81,6 +86,37 @@ export class ChatComp implements OnInit {
         );
     }
 
+    filterChange(event) {
+        if (event.length < 3) {
+            return true;
+        }
+        this.users_filter = event;
+        if (this.filterTo) {
+            clearTimeout(this.filterTo);
+        }
+        this.filterTo = setTimeout(() => {
+            this.usersGet();
+        }, 500);
+    }
+
+    usersGet() {
+        const obj = {usersfilter: this.users_filter};
+        console.log(obj);
+        this.chatServ.usersGet(obj).subscribe(
+            (res: Response) => {
+                const body = res.json();
+                this.users = body.res.map((elem) => {
+                    return {username: elem.username, id: elem.id, selected: !!elem.id};
+                });
+                console.log(body.res);
+                this.scrollBottom();
+            },
+            (err: Response) => {
+                console.log(err);
+            }
+        );
+    }
+
     selectClient(client) {
         this.client = client;
         this.messagesGet(this.client);
@@ -108,7 +144,7 @@ export class ChatComp implements OnInit {
     recieve(msg) {
         let {sUsername, payload} = msg;
         console.log(msg);
-        this.messages.push({sUsername: sUsername, payload: payload});
+        this.messages.unshift({message: msg.payload.msg, status: "", username: sUsername});
         this.scrollBottom();
     }
 
@@ -120,10 +156,20 @@ export class ChatComp implements OnInit {
         }
         //  $("#reciever").val();
         const token = this.state.token;
-        const obj = JSON.stringify({token: token, sender: this.state.cred["user"].username, receivers: [this.client], payload: {msg: msg}, method: "chat-msg"});
-        console.log(obj);
+        const obj = JSON.stringify({
+            token: token,
+            sender: this.state.cred["user"].username,
+            receivers: [this.client],
+            payload: {msg: msg},
+            method: "chat-msg"});
         this.con.send(obj);
-        this.messages.push({sUsername: "trainer", payload: {msg: msg}});
+        let new_msg = {
+            message: msg,
+            id: 0, status: "send",
+            username: this.state.cred["user"].username,
+            created: moment().utc().format("YYYY-MM-DDTHH:mm:ss")};
+        console.log(new_msg);
+        this.messages.unshift(new_msg);
         this.messageToSend = "";
         this.scrollBottom();
     }
@@ -139,10 +185,12 @@ export class ChatComp implements OnInit {
         };
 
         this.con.onerror = (e) => {
+            console.log(e);
             console.error("WebSocket-Problem");
         };
 
         this.con.onmessage = (e) => {
+            console.log(e);
             const resp = JSON.parse(e.data);
             console.log(resp);
 

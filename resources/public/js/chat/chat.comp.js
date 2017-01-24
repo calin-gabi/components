@@ -21,6 +21,7 @@ var config_1 = require("../core/config");
 var state_serv_1 = require("../core/state.serv");
 var auth_serv_1 = require("../core/auth.serv");
 var chat_serv_1 = require("./chat.serv");
+var moment = require("moment");
 var ChatComp = (function () {
     function ChatComp(route, router, cfg, state, authServ, chatServ) {
         this.route = route;
@@ -36,6 +37,9 @@ var ChatComp = (function () {
         this.client = { username: "", online: false };
         this.messageToSend = "";
         this.lastmsg_id = 0;
+        this.users = [];
+        this.users_filter = "";
+        this.filterTo = null;
         this.keyDown = function (event) {
             if (event.key === "Enter") {
                 this.send();
@@ -71,6 +75,34 @@ var ChatComp = (function () {
             console.log(err);
         });
     };
+    ChatComp.prototype.filterChange = function (event) {
+        var _this = this;
+        if (event.length < 3) {
+            return true;
+        }
+        this.users_filter = event;
+        if (this.filterTo) {
+            clearTimeout(this.filterTo);
+        }
+        this.filterTo = setTimeout(function () {
+            _this.usersGet();
+        }, 500);
+    };
+    ChatComp.prototype.usersGet = function () {
+        var _this = this;
+        var obj = { usersfilter: this.users_filter };
+        console.log(obj);
+        this.chatServ.usersGet(obj).subscribe(function (res) {
+            var body = res.json();
+            _this.users = body.res.map(function (elem) {
+                return { username: elem.username, id: elem.id, selected: !!elem.id };
+            });
+            console.log(body.res);
+            _this.scrollBottom();
+        }, function (err) {
+            console.log(err);
+        });
+    };
     ChatComp.prototype.selectClient = function (client) {
         this.client = client;
         this.messagesGet(this.client);
@@ -88,7 +120,7 @@ var ChatComp = (function () {
     ChatComp.prototype.recieve = function (msg) {
         var sUsername = msg.sUsername, payload = msg.payload;
         console.log(msg);
-        this.messages.push({ sUsername: sUsername, payload: payload });
+        this.messages.unshift({ message: msg.payload.msg, status: "", username: sUsername });
         this.scrollBottom();
     };
     ChatComp.prototype.send = function () {
@@ -97,10 +129,20 @@ var ChatComp = (function () {
             return true;
         }
         var token = this.state.token;
-        var obj = JSON.stringify({ token: token, sender: this.state.cred["user"].username, receivers: [this.client], payload: { msg: msg }, method: "chat-msg" });
-        console.log(obj);
+        var obj = JSON.stringify({
+            token: token,
+            sender: this.state.cred["user"].username,
+            receivers: [this.client],
+            payload: { msg: msg },
+            method: "chat-msg" });
         this.con.send(obj);
-        this.messages.push({ sUsername: "trainer", payload: { msg: msg } });
+        var new_msg = {
+            message: msg,
+            id: 0, status: "send",
+            username: this.state.cred["user"].username,
+            created: moment().utc().format("YYYY-MM-DDTHH:mm:ss") };
+        console.log(new_msg);
+        this.messages.unshift(new_msg);
         this.messageToSend = "";
         this.scrollBottom();
     };
@@ -113,9 +155,11 @@ var ChatComp = (function () {
             _this.con.send(jsonObj);
         };
         this.con.onerror = function (e) {
+            console.log(e);
             console.error("WebSocket-Problem");
         };
         this.con.onmessage = function (e) {
+            console.log(e);
             var resp = JSON.parse(e.data);
             console.log(resp);
             switch (resp.method) {

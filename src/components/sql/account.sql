@@ -1,10 +1,6 @@
 -- :name users-read :? :*
 SELECT * FROM users;
 
--- :name clients-read :? :*
-SELECT users.username FROM users
-WHERE username != :username;
-
 -- :name by-role-users-get :? :*
 SELECT DISTINCT users.* FROM users
 INNER JOIN usersinroles
