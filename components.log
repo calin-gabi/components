@@ -709,3 +709,5 @@
 17-01-24 13:59:57 UnknownHost INFO [components.ctrl.chat:145] - :going-away 0.0.0.0/0.0.0.0:4016<->null
 17-01-24 14:00:48 UnknownHost INFO [components.ctrl.chat:145] - :going-away 0.0.0.0/0.0.0.0:4016<->null
 17-01-24 14:00:50 UnknownHost INFO [components.ctrl.chat:122] - gabimunteanu.sdt@gmail.com :connected
+17-02-11 15:19:46 38:C9:86:46:6A:C1.SpeedportEntry2090126200030 INFO [components.core.boot:53] - Components started successfully on port 4016
+17-02-11 15:24:45 38:C9:86:46:6A:C1.SpeedportEntry2090126200030 INFO [components.ctrl.chat:145] - :going-away 0.0.0.0/0.0.0.0:4016<->null
